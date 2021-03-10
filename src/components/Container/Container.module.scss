@@ -1,0 +1,11 @@
+.container {
+    // Scale
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    // Location
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

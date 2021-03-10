@@ -1,0 +1,114 @@
+.paragraphContainer {
+    // Scale
+    margin: 0 auto 70px;
+    padding: 0 10px;
+    // Style
+    border-left: 3px solid #ff9900;
+    border-right: 3px solid #ff9900;
+}
+
+.form {
+    // Scale
+    width: 100%;
+    // Location
+    display: grid;
+    @media screen and (max-width: 760px) {
+        grid-template-columns: 1fr;
+    }
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 1em;
+    justify-content: space-between;
+}
+
+.form div {
+    // Location
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input {
+    // Scale
+    height: 60px;
+    padding: 30px;
+    // Location
+    position: relative;
+    // Style
+    border: none;
+    background-color: #ececec;
+    outline: none;
+    border-radius: 30px;
+    font-size: 15px;
+    // Animation
+    transition: 0.2s;
+}
+
+.input:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.input:hover,
+.input:focus {
+    // Location
+    bottom: 2px;
+    // Style
+    box-shadow: 0 9px 30px rgba(0, 0, 0, 0.2);
+    background-image: url("./../../images//icons/input-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center right 20px;
+}
+
+.textarea {
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+    // Scale
+    height: 200px;
+    padding: 30px;
+    // Location
+    position: relative;
+    // Style
+    border: none;
+    font-family: sans-serif;
+    background-color: #ececec;
+    outline: none;
+    border-radius: 30px;
+    font-size: 15px;
+    resize: none;
+    // Animation
+    transition: 0.2s;
+}
+
+.textarea:hover,
+.textarea:focus {
+    // Location
+    bottom: 2px;
+    // Style
+    box-shadow: 0 9px 30px rgba(0, 0, 0, 0.2);
+}
+
+.button {
+    // Scale
+    height: 50px;
+    width: 200px;
+    @media screen and (max-width: 760px) {
+        margin: 0 auto;
+    }
+    // Location
+    position: relative;
+    // Style
+    border: none;
+    background-color: #006bcd;
+    cursor: pointer;
+    border-radius: 25px;
+    color: white;
+    // Animation
+    transition: 0.2s;
+}
+
+.button:hover {
+    // Location
+    bottom: 2px;
+    // Style
+    box-shadow: 0 9px 30px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,47 @@
+.section {
+    // Scale
+    padding: 70px 0 175px;
+}
+
+.container {
+    // Scale
+    max-width: 1140px;
+    margin: 0 auto;
+    // Location
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading {
+    // Scale
+    margin-bottom: 20px;
+    // Style
+    font-size: 40px;
+}
+
+.mapContainer {
+    // Scale
+    height: 450px;
+    width: 700px;
+    // Style
+    background-color: whitesmoke;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
+    // Animation
+    transition: .2s;
+}
+
+.mapContainer:hover {
+    // Scale
+    transform: scale(1.1);
+}
+
+.linksContainer {
+    // Style
+    list-style: none;
+}
+
+.linksContainer li:not(:last-child) {
+    // Scale
+    margin-bottom: 20px;
+}

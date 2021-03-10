@@ -1,0 +1,122 @@
+// Sections
+
+.section {
+    // Scale
+    padding: 70px 0 175px;
+    // Style
+    text-align: center;
+}
+
+.container {
+    // Scale
+    max-width: 1140px;
+    margin: 0 auto;
+    // Location
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// Slider
+
+.slider {
+    // Scale
+    height: 670px;
+    @media screen and (max-width: 760px) {
+        height: 200px;
+    }
+    // Style
+    background-color: whitesmoke;
+}
+
+// Preview section
+
+.rowContainer {
+    // Location
+    display: grid;
+    @media screen and (max-width: 760px) {
+        grid-template-columns: 1fr;
+        grid-row-gap: 50px;
+    }
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.rowContainerSeporator {
+    // Scale
+    height: 150px;
+    width: 1px;
+    // Location
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+    transform: rotate(90deg);
+    // Style
+    border: none;
+    background-color: #006bcd;
+}
+
+.rowContainerItem {
+    // Scale
+    width: 250px;
+    // Location
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rowContainerItem img {
+    // Scale
+    height: 150px;
+}
+
+.rowContainerItem p {
+    // Scale
+    margin: 30px 0 50px;
+    // Style
+    font-size: 14px;
+}
+
+// Why are we choosen?
+
+.columnContainer {
+    // Location
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @media screen and (max-width: 760px) {
+        grid-template-columns: 1fr;
+        grid-row-gap: 50px;
+    }
+    align-items: center;
+    justify-items: center;
+    grid-row-gap: 1em;
+}
+
+.columnContainer img {
+    // Location
+    grid-column: 2/3;
+    @media screen and (max-width: 760px) {
+        grid-column: 1;
+    }
+    height: 200px;
+}
+
+.columnContainer p {
+    // Style
+    text-align: left;
+}
+
+.columnContainerSeporator {
+    // Scale
+    height: 50px;
+    width: 1px;
+    // Location
+    grid-column: 1/4;
+    @media screen and (max-width: 760px) {
+        grid-column: 1;
+    }
+    // Style
+    border: none;
+    background-color: #006bcd;
+}

@@ -1,0 +1,59 @@
+.preview {
+    // Scale
+    @media screen and (max-width: 760px) {
+        
+    }
+    height: 670px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    // Location
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // Style
+    color: white;
+    border-radius: 40px;
+    background-color: whitesmoke;
+    background-image: url("./images/content/about-us-preview.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    box-shadow: 0px 40px 80px rgba(0, 0, 0, .25);
+    text-shadow: 0 0 10px black;
+}
+
+.subtitle {
+    // Scale
+    margin-bottom: 20px;
+    // Style
+    font-size: 13px;
+    font-weight: 400;
+}
+
+// Task container
+
+.taskContainer {
+    // Location
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1em;
+    grid-row-gap: 50px;
+    justify-items: center;
+}
+
+.taskItem {
+    // Scale
+    width: 280px;
+}
+
+.taskItem img {
+    // Scale
+    margin-bottom: 30px;
+}
+
+.taskItem p {
+    // Style
+    font-size: 14px;
+    font-weight: 400;
+}
