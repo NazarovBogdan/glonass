@@ -4,12 +4,14 @@ import style from './Container.module.scss'
 
 
 function Container(props) {
-    return(
+    return (
         <div
             className={style.container}
             {...props}
         >
-            {props.children}
+            <div className={style.inner}>
+                {props.children}
+            </div>
         </div>
     )
 }

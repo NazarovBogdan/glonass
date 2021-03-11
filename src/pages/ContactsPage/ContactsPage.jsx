@@ -9,6 +9,8 @@ import '../../../node_modules/aos/dist/aos.css'
 import Seporator from '../../components/Seporator/Seporator'
 import TargetLink from '../../components/TargetLink/TargetLink'
 import Heading from './../../components/Heading/Heading'
+import Section from './../../components/Section/Section'
+import Container from './../../components/Container/Container'
 
 
 
@@ -19,44 +21,50 @@ function ContactsPage() {
 
     return (
         <main data-aos="fade">
-            <section className={style.section}>
-                <div className={style.container}>
-                    <div>
-                        <div className={style.mapContainer}>
+            <Section>
+                <Container>
+                    <div className={style.container}>
+                        <div>
+                            <div className={style.mapContainer}>
 
+                            </div>
+                        </div>
+                        <div className={style.contactsContent}>
+                            <Heading
+                                style={{
+                                    textAlign: 'left',
+                                    marginBottom: 20
+                                }}
+                            >
+                                Контакты
+                            </Heading>
+                            <Seporator />
+                            <ul className={style.linksContainer}>
+                                <li>
+                                    <TargetLink>
+                                        +7 863 322-61-62
+                                    </TargetLink>
+                                </li>
+                                <li>
+                                    <TargetLink>
+                                        info@glonass-rg.ru
+                                    </TargetLink>
+                                </li>
+                                <li>
+                                    <TargetLink>
+                                        г.Ростов-на-Дону, ул.Пескова, 1/2, оф.15
+                                    </TargetLink>
+                                </li>
+                                <li>
+                                    <TargetLink>
+                                        г.Краснодар, ул.Калинина, 327, оф.407
+                                    </TargetLink>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div>
-                        <Heading className={style.heading}>
-                            Контакты
-                        </Heading>
-                        <Seporator />
-                        <ul className={style.linksContainer}>
-                            <li>
-                                <TargetLink>
-                                    +7 863 322-61-62
-                                </TargetLink>
-                            </li>
-                            <li>
-                                <TargetLink>
-                                    info@glonass-rg.ru
-                                </TargetLink>
-                            </li>
-                            <li>
-                                <TargetLink>
-                                    г.Ростов-на-Дону, ул.Пескова, 1/2, оф.15
-                                </TargetLink>
-                            </li>
-                            <li>
-                                <TargetLink>
-                                    г.Краснодар, ул.Калинина, 327, оф.407
-                                </TargetLink>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </section>
+                </Container>
+            </Section>
         </main>
     )
 }

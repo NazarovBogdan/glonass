@@ -1,23 +1,8 @@
-.section {
-    // Scale
-    padding: 70px 0 175px;
-}
-
 .container {
-    // Scale
-    max-width: 1140px;
-    margin: 0 auto;
     // Location
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.heading {
-    // Scale
-    margin-bottom: 20px;
-    // Style
-    font-size: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3em;
 }
 
 .mapContainer {
@@ -27,13 +12,16 @@
     // Style
     background-color: whitesmoke;
     box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
+    border: 5px solid white;
     // Animation
     transition: .2s;
 }
 
-.mapContainer:hover {
-    // Scale
-    transform: scale(1.1);
+.contactsContent {
+    // Location
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .linksContainer {

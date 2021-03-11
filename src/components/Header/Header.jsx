@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom'
 // Components
 import TargetButton from './../TargetButton/TargetButton'
 import TargetLink from './../TargetLink/TargetLink'
+import Container from './../Container/Container'
 // Icons
 import logo from './../../images/logo/logotype.svg'
 
@@ -48,59 +49,47 @@ function Header() {
 
     return (
         <header className={style.header}>
-            <div className={style.container}>
-                <div className={style.logo}>
-                    <NavLink to="/">
-                        <img src={logo} alt="Логотип" />
-                    </NavLink>
+            <Container>
+                <div className={style.container}>
+                    <div className={style.logo}>
+                        <NavLink to="/">
+                            <img src={logo} alt="Логотип" />
+                        </NavLink>
+                    </div>
+                    {display === 'isDesktop' &&
+                        <React.Fragment>
+                            <TargetLink>
+                                +7 863 322-61-62
+                            </TargetLink>
+                            <TargetButton>
+                                Заказать звонок
+                            </TargetButton>
+                            <TargetButton>
+                                Демо wialon
+                            </TargetButton>
+                            <TargetButton>
+                                Демо omnicomm
+                            </TargetButton>
+                            <form action="">
+                                <input
+                                    type="search"
+                                    className={style.searchField}
+                                />
+                            </form>
+                        </React.Fragment>
+                    }
+                    {display === 'isTablet' &&
+                        <React.Fragment>
+
+                        </React.Fragment>
+                    }
+                    {display === 'isMobile' &&
+                        <React.Fragment>
+                            
+                        </React.Fragment>
+                    }
                 </div>
-                {display === 'isDesktop' &&
-                    <React.Fragment>
-                        <form action="">
-                            <select
-                                name="city"
-                                id=""
-                                className={style.selectList}
-                            >
-                                <option value="krasnodar">
-                                    Краснодар
-                        </option>
-                                <option value="rostovOnDon">
-                                    Ростов-на-Дону
-                        </option>
-                            </select>
-                        </form>
-                        <TargetLink>
-                            +7 863 322-61-62
-                        </TargetLink>
-                        <TargetButton>
-                            Заказать звонок
-                        </TargetButton>
-                        <TargetButton>
-                            Демо wialon
-                        </TargetButton>
-                        <TargetButton>
-                            Демо omnicomm
-                        </TargetButton>
-                        <form action="">
-                            <input
-                                type="search"
-                                className={style.searchField}
-                            />
-                        </form>
-                    </React.Fragment>
-                }
-                {display === 'isTablet' &&
-                    <React.Fragment>
-
-                    </React.Fragment>
-                }
-                {display === 'isMobile' &&
-                    <React.Fragment>
-
-                    </React.Fragment>
-                }
-            </div>
+            </Container>
         </header>
     )
 }

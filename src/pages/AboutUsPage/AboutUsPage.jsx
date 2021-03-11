@@ -35,7 +35,9 @@ function AboutUsPage() {
                             <p className={style.subtitle}>
                                 Глонасс-Регионы
                             </p>
-                            <Heading style={{ textAlign: 'left' }}>
+                            <Heading
+                                style={{ textAlign: 'left' }}
+                            >
                                 О компании
                             </Heading>
                             <Seporator />
@@ -62,30 +64,35 @@ function AboutUsPage() {
                                 Сокращение пробега, времени доставки и затрат на ТО
                             </Paragraph>
                         </div>
+                        <hr className={style.seporator} />
                         <div className={style.taskItem}>
                             <img src={aerialItem} alt="" />
                             <Paragraph>
                                 Интеграция c 1C и SAP
                             </Paragraph>
                         </div>
+                        <hr className={style.seporator} />
                         <div className={style.taskItem}>
                             <img src={mapItem} alt="" />
                             <Paragraph>
                                 Отимизация маршрута
                             </Paragraph>
                         </div>
+                        <hr className={style.seporator} />
                         <div className={style.taskItem}>
                             <img src={gazItem} alt="" />
                             <Paragraph>
                                 Контроль скоростного режима, расхода топлива (заправки, сливы),контроль местоположения в онлайн режиме
                             </Paragraph>
                         </div>
+                        <hr className={style.seporator} />
                         <div className={style.taskItem}>
                             <img src={trackDropItem} alt="" />
                             <Paragraph>
                                 Повышение трудовой дисциплины, культуры вождения и безопасности перевозок
                             </Paragraph>
                         </div>
+                        <hr className={style.seporator} />
                         <div className={style.taskItem}>
                             <img src={markerItem} alt="" />
                             <Paragraph>

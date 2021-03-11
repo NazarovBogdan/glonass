@@ -91,37 +91,45 @@ function MainPage() {
                         Как это устроено
                     </Heading>
                     <div className={style.columnContainer}>
-                        <Paragraph>
-                            Передача сигнала спутником на устройство в вашей машине
-                        </Paragraph>
-                        <img
-                            src={stelliteItem}
-                            alt=""
-                        />
+                        <div>
+                            <Paragraph style={{ marginBottom: 0 }}>
+                                Передача сигнала спутником на устройство в вашей машине
+                            </Paragraph>
+                            <img
+                                src={stelliteItem}
+                                alt=""
+                            />
+                        </div>
                         <hr className={style.columnContainerSeporator} />
-                        <img
-                            src={trackItem}
-                            alt=""
-                        />
-                        <Paragraph>
-                            Установленные на транспортные средства терминалы передают данные в облачный сервис Omnicomm Online
-                        </Paragraph>
+                        <div>
+                            <img
+                                src={trackItem}
+                                alt=""
+                            />
+                            <Paragraph style={{ marginBottom: 0 }}>
+                                Установленные на транспортные средства терминалы передают данные в облачный сервис Omnicomm Online
+                            </Paragraph>
+                        </div>
                         <hr className={style.columnContainerSeporator} />
-                        <Paragraph>
-                            Доступ к Omnicomm Online осуществляется через web-интерфейс с любого устройства
-                        </Paragraph>
-                        <img
-                            src={phoneItem}
-                            alt=""
-                        />
+                        <div>
+                            <Paragraph style={{ marginBottom: 0 }}>
+                                Доступ к Omnicomm Online осуществляется через web-интерфейс с любого устройства
+                            </Paragraph>
+                            <img
+                                src={phoneItem}
+                                alt=""
+                            />
+                        </div>
                         <hr className={style.columnContainerSeporator} />
-                        <img
-                            src={cloudItem}
-                            alt=""
-                        />
-                        <Paragraph>
-                            Все данные хронятся  на нашем сервере, где их может проверить пользователь
-                        </Paragraph>
+                        <div>
+                            <img
+                                src={cloudItem}
+                                alt=""
+                            />
+                            <Paragraph style={{ marginBottom: 0 }}>
+                                Все данные хронятся  на нашем сервере, где их может проверить пользователь
+                            </Paragraph>
+                        </div>
                     </div>
                 </Container>
             </Section>

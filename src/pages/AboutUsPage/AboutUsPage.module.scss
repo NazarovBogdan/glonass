@@ -1,7 +1,10 @@
 .preview {
     // Scale
     @media screen and (max-width: 760px) {
-        
+        min-height: 200px;
+        height: 100%;
+        padding: 30px 0 40px;
+        border-radius: 20px;
     }
     height: 670px;
     width: 100%;
@@ -11,6 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     // Style
     color: white;
     border-radius: 40px;
@@ -19,16 +23,49 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
-    box-shadow: 0px 40px 80px rgba(0, 0, 0, .25);
+    box-shadow: 0px 40px 80px rgba(0, 0, 0, 0.25);
     text-shadow: 0 0 10px black;
 }
 
 .subtitle {
     // Scale
     margin-bottom: 20px;
+    // Location
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
     // Style
     font-size: 13px;
     font-weight: 400;
+}
+
+.previewContent {
+    // Scale
+    width: 100%;
+}
+
+.previewContent p {
+    @media screen and (max-width: 760px) {
+        margin-bottom: 0;
+    }
+}
+
+.previewContent p:nth-child(5) {
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+.previewContent h2 {
+    @media screen and (max-width: 760px) {
+        margin-bottom: 10px;
+    }
+}
+
+.previewContent hr {
+    @media screen and (max-width: 760px) {
+        margin-bottom: 10px;
+    }
 }
 
 // Task container
@@ -37,23 +74,52 @@
     // Location
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    @media screen and (max-width: 760px) {
+        grid-template-columns: 1fr;
+        grid-row-gap: 1em;
+    }
     grid-column-gap: 1em;
     grid-row-gap: 50px;
     justify-items: center;
 }
 
 .taskItem {
-    // Scale
-    width: 280px;
+    // Location
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .taskItem img {
     // Scale
+    height: 150px;
+    @media screen and (max-width: 760px) {
+        height: 75px;
+    }
     margin-bottom: 30px;
 }
 
 .taskItem p {
+    // Scale
+    width: 80%;
+    margin-bottom: 0;
     // Style
     font-size: 14px;
     font-weight: 400;
+}
+
+.seporator {
+    // Scale
+    height: 50px;
+    width: 1px;
+    // Location
+    display: none;
+    grid-column: 1/-1;
+    @media screen and (max-width: 760px) {
+        display: block;
+        grid-column: 1;
+    }
+    // Style
+    border: none;
+    background-color: #006bcd;
 }

@@ -3,7 +3,14 @@
     max-width: 1140px;
     width: 100%;
     margin: 0 auto;
-    padding: 20px;
+}
+
+.inner {
+    // Scale
+    width: 100%;
+    @media screen and (max-width: 760px) {
+        padding: 0 20px;
+    }
     // Location
     display: flex;
     flex-direction: column;

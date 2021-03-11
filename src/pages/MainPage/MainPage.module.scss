@@ -1,27 +1,9 @@
-// Sections
-
-.section {
-    // Scale
-    padding: 70px 0 175px;
-    // Style
-    text-align: center;
-}
-
-.container {
-    // Scale
-    max-width: 1140px;
-    margin: 0 auto;
-    // Location
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 // Slider
 
 .slider {
     // Scale
     height: 670px;
+    width: 100%;
     @media screen and (max-width: 760px) {
         height: 200px;
     }
@@ -86,25 +68,46 @@
     grid-template-columns: repeat(3, 1fr);
     @media screen and (max-width: 760px) {
         grid-template-columns: 1fr;
-        grid-row-gap: 50px;
     }
     align-items: center;
     justify-items: center;
     grid-row-gap: 1em;
 }
 
-.columnContainer img {
+.columnContainer div {
+    // Location
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @media screen and (max-width: 760px) {
+        grid-template-columns: 1fr;
+    }
+    align-items: center;
+    justify-items: center;
+    grid-column: 1/-1;
+}
+
+.columnContainer div img {
     // Location
     grid-column: 2/3;
     @media screen and (max-width: 760px) {
-        grid-column: 1;
+        height: 150px;
+        grid-column: 1/-1;
+        order: 1;
     }
     height: 200px;
 }
 
-.columnContainer p {
+
+.columnContainer div p {
     // Style
     text-align: left;
+    // Location
+    @media screen and (max-width: 760px) {
+        width: 300px;
+        margin-top: 30px;
+        grid-column: 1/-1;
+        order: 2;
+    }
 }
 
 .columnContainerSeporator {
@@ -112,7 +115,7 @@
     height: 50px;
     width: 1px;
     // Location
-    grid-column: 1/4;
+    grid-column: 1/-1;
     @media screen and (max-width: 760px) {
         grid-column: 1;
     }

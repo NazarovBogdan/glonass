@@ -1,13 +1,15 @@
 .header {
     // Scale
     height: 50px;
+    @media screen and (max-width: 760px) {
+        height: 30px;
+    }
     margin: 20px 0;
 }
 
 .container {
-    // Scale
     max-width: 1140px;
-    margin: 0 auto;
+    width: 100%;
     // Location
     display: flex;
     align-items: center;
@@ -16,17 +18,28 @@
 
 .logo {
     // Scale
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
+    @media screen and (max-width: 760px) {
+        height: 30px;
+        width: 30px;
+    }
     // Location
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.logo a {
+    // Scale
+    width: 100%;
+    height: 100%;
+}
+
 .logo img {
     // Scale
-    height: 35px;
+    height: 100%;
+    width: 100%;
 }
 
 .selectList {
