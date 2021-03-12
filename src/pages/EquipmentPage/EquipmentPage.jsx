@@ -10,6 +10,15 @@ import '../../../node_modules/aos/dist/aos.css'
 // Components
 import Seporator from './../../components/Seporator/Seporator'
 import Heading from './../../components/Heading/Heading'
+import Paragraph from './../../components/Paragraph/Paragraph'
+import Container from './../../components/Container/Container'
+import Section from './../../components/Section/Section'
+import Subtitle from './../../components/Subtitle/Subtitle'
+// Images
+import videoItem from './images/content/video-item.png'
+import terminalItem from './images/content/terminal-item.png'
+import sensorItem from './images/content/sensor-item.png'
+import equipmentItem from './images/content/equipment-item.png'
 
 
 
@@ -20,15 +29,18 @@ function EquipmentPage() {
 
     return (
         <main data-aos="fade">
-            <section className={style.section}>
-                <div className={style.container}>
+            <Section>
+                <Container>
+                    <Subtitle>
+                        Глонасс-Регионы
+                    </Subtitle>
                     <Heading>
                         Оборудование
                     </Heading>
                     <Seporator />
-                    <p className={style.paragraph}>
+                    <Paragraph>
                         Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
-                    </p>
+                    </Paragraph>
                     <div className={style.itemsContainer}>
                         <NavLink to="#">
                             <div className={style.item}>
@@ -59,10 +71,8 @@ function EquipmentPage() {
                             </div>
                         </NavLink>
                     </div>
-
-                </div>
-
-            </section>
+                </Container>
+            </Section>
         </main>
     )
 }

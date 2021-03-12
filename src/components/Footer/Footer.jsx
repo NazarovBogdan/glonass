@@ -119,17 +119,18 @@ function Footer() {
                     </div>
                 </div>
                 <div className={style.underFooter}>
-                    <div>
-                        <p>
-                            © 2021, Все права защищены
+                    <p>
+                        © 2021, Все права защищены
                         </p>
-                        <TargetLink>
-                            <img
-                                src={orangeIcon}
-                                alt=""
-                            />
-                        </TargetLink>
-                    </div>
+                    <TargetLink
+                        href="https://orangedm.agency/"
+                        target="_blank"
+                    >
+                        <img
+                            src={orangeIcon}
+                            alt=""
+                        />
+                    </TargetLink>
                 </div>
             </Container>
         </footer>

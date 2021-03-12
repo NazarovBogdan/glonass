@@ -7,32 +7,36 @@ import React, {
 import style from './Header.module.scss'
 // RRD
 import { NavLink } from 'react-router-dom'
+// AOS
+import Aos from 'aos'
+import '../../../node_modules/aos/dist/aos.css'
 // Components
 import TargetButton from './../TargetButton/TargetButton'
 import TargetLink from './../TargetLink/TargetLink'
 import Container from './../Container/Container'
+import Heading from '../Heading/Heading'
 // Icons
 import logo from './../../images/logo/logotype.svg'
+import burger from './../../images/icons/burger-icon.svg'
 
 
 
 function Header() {
-    // const [display, setWidth] = useState(null)
+    useEffect(() => {
+        Aos.init({ duration: 700 });
+    }, [])
 
-    // useEffect(() => {
-    //     let windowWidth = window.screen.width
+    const [isBurgerOpened, handleBurger] = useState(false)
 
-    //     if (windowWidth >= 320 && windowWidth < 760) {
-    //         setWidth(display = 'isMobile')
-    //         display = 'isMobile'
-    //     }
-    //     else if (windowWidth >= 760 && windowWidth < 1024) {
-    //         setWidth(display = 'isTablet')
-    //     }
-    //     else {
-    //         setWidth(display = 'isDesktop')
-    //     }
-    // })
+    const openBurger = () => {
+        if (isBurgerOpened) {
+            handleBurger(false)
+        }
+        else {
+            handleBurger(true)
+        }
+        console.log(isBurgerOpened);
+    }
 
     let display = null
     let windowWidth = window.screen.width
@@ -78,14 +82,23 @@ function Header() {
                             </form>
                         </React.Fragment>
                     }
-                    {display === 'isTablet' &&
+                    {display === 'isTablet' || display === 'isMobile' &&
                         <React.Fragment>
+                            <button
+                                className={style.burger}
+                                onClick={openBurger}
+                            />
+                            {isBurgerOpened &&
+                                <React.Fragment>
+                                    <div className={style.background} onClick={openBurger} data-aos="fade">
+                                        <nav className={style.burgerMenu} data-aos="fade-left">
+                                            <Heading>
 
-                        </React.Fragment>
-                    }
-                    {display === 'isMobile' &&
-                        <React.Fragment>
-                            
+                                            </Heading>
+                                        </nav>
+                                    </div>
+                                </React.Fragment>
+                            }
                         </React.Fragment>
                     }
                 </div>

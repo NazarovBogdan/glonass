@@ -1,0 +1,58 @@
+.itemContainer {
+    // Location
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    @media screen and (max-width: 760px) {
+        grid-template-columns: 1fr;
+    }
+    grid-gap: 40px;
+}
+
+.gallery {
+    // Location
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.image:nth-child(1) {
+    // Scale
+    width: 440px;
+    height: 440px;
+    // Location
+    grid-row: 1/4;
+}
+
+.image {
+    // Scale
+    width: 140px;
+    height: 140px;
+    // Location
+    background-color: whitesmoke;
+    border-radius: 20px;
+    // Style
+    cursor: pointer;
+}
+
+.image img {
+
+}
+
+.image:not(:nth-child(1)) {
+    // Scale
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+.features {
+    // Location
+    display: flex;
+    // Style
+    list-style: none;
+}
+
+.priceContainer {
+    // Location
+    display: flex;
+}

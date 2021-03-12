@@ -5,6 +5,8 @@ import style from './MainPage.module.scss'
 // AOS
 import Aos from 'aos'
 import '../../../node_modules/aos/dist/aos.css'
+// Slider
+import Slider from 'react-slick'
 // Components
 import Seporator from './../../components/Seporator/Seporator'
 import TargetButton from './../../components/TargetButton/TargetButton'
@@ -47,7 +49,11 @@ function MainPage() {
                     </Paragraph>
                     <div className={style.rowContainer}>
                         <div className={style.rowContainerItem}>
-                            <img src={mechItem} alt="" />
+                            <img
+                                className={style.image}
+                                src={mechItem}
+                                alt=""
+                            />
                             <Paragraph>
                                 Оборудование для транспорта
                             </Paragraph>
@@ -57,7 +63,11 @@ function MainPage() {
                         </div>
                         <hr className={style.rowContainerSeporator} />
                         <div className={style.rowContainerItem}>
-                            <img src={deskItem} alt="" />
+                            <img
+                                className={style.image}
+                                src={deskItem}
+                                alt=""
+                            />
                             <Paragraph>
                                 Программное обеспечение
                             </Paragraph>
@@ -67,7 +77,11 @@ function MainPage() {
                         </div>
                         <hr className={style.rowContainerSeporator} />
                         <div className={style.rowContainerItem}>
-                            <img src={techItem} alt="" />
+                            <img
+                                className={style.image}
+                                src={techItem}
+                                alt=""
+                            />
                             <Paragraph>
                                 Готовые решения
                             </Paragraph>
@@ -84,6 +98,32 @@ function MainPage() {
                         Почему выбирают нас
                     </Heading>
                 </Container>
+                <Slider
+                    infinite
+                    slidesToShow={3}
+                >
+                    <div style={{
+                        height: 100,
+                        width: 300,
+                        backgroundColor: 'blue'
+                    }}>
+                        Slide
+                    </div>
+                    <div style={{
+                        height: 100,
+                        width: 300,
+                        backgroundColor: 'blue'
+                    }}>
+                        Slide
+                    </div>
+                    <div style={{
+                        height: 100,
+                        width: 300,
+                        backgroundColor: 'blue'
+                    }}>
+                        Slide
+                    </div>
+                </Slider>
             </Section>
             <Section>
                 <Container>
@@ -96,6 +136,7 @@ function MainPage() {
                                 Передача сигнала спутником на устройство в вашей машине
                             </Paragraph>
                             <img
+                                className={style.image}
                                 src={stelliteItem}
                                 alt=""
                             />
@@ -103,6 +144,7 @@ function MainPage() {
                         <hr className={style.columnContainerSeporator} />
                         <div>
                             <img
+                                className={style.image}
                                 src={trackItem}
                                 alt=""
                             />
@@ -116,6 +158,7 @@ function MainPage() {
                                 Доступ к Omnicomm Online осуществляется через web-интерфейс с любого устройства
                             </Paragraph>
                             <img
+                                className={style.image}
                                 src={phoneItem}
                                 alt=""
                             />
@@ -123,6 +166,7 @@ function MainPage() {
                         <hr className={style.columnContainerSeporator} />
                         <div>
                             <img
+                                className={style.image}
                                 src={cloudItem}
                                 alt=""
                             />
@@ -133,7 +177,7 @@ function MainPage() {
                     </div>
                 </Container>
             </Section>
-        </main>
+        </main >
     )
 }
 

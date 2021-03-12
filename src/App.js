@@ -17,8 +17,21 @@ import MainPage from './pages/MainPage/MainPage'
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage'
 import EquipmentPage from './pages/EquipmentPage/EquipmentPage'
 import ContactsPage from './pages/ContactsPage/ContactsPage'
+import CategoryPage from './pages/CategoryPage/CategoryPage'
+import ItemPage from './pages/ItemPage/ItemPage'
 
 
+
+const theme = {
+    dark: {
+        primary: '',
+        secondly: ''
+    },
+    light: {
+        primary: '',
+        secondly: ''
+    }
+}
 
 function App() {
     return (
@@ -34,6 +47,12 @@ function App() {
                 </Route>
                 <Route path="/about">
                     <AboutUsPage />
+                </Route>
+                <Route path="/category">
+                    <CategoryPage />
+                </Route>
+                <Route path="/item">
+                    <ItemPage />
                 </Route>
                 <Route path="/">
                     <MainPage />

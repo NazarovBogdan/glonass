@@ -3,6 +3,9 @@
     height: 4px;
     width: 75px;
     margin-bottom: 30px;
+    @media screen and (max-width: 760px) {
+        margin-bottom: 20px;
+    }
     // Style
     border: none;
     border-radius: 2px;

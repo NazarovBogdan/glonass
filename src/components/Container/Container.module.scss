@@ -1,6 +1,6 @@
 .container {
     // Scale
-    max-width: 1140px;
+    max-width: 1160px;
     width: 100%;
     margin: 0 auto;
 }
@@ -8,9 +8,7 @@
 .inner {
     // Scale
     width: 100%;
-    @media screen and (max-width: 760px) {
-        padding: 0 20px;
-    }
+    padding: 0 10px;
     // Location
     display: flex;
     flex-direction: column;

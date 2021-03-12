@@ -85,3 +85,50 @@
     // Scale
     width: 300px;
 }
+
+// Mobile
+
+.burger {
+    // Scale
+    height: 40px;
+    width: 40px;
+    // Style
+    background-image: url("./../../images/icons/burger-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.burgerMenu {
+    // Scale
+    height: 100vh;
+    width: 250px;
+    // Location
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    // Style
+    background-color: #006bcd;
+    box-shadow: 0 30px 70px black;
+    // Animations
+    transition: 0.2s;
+}
+
+.background {
+    // Scale
+    height: 100vh;
+    width: 100vw;
+    // Location
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    // Style
+    backdrop-filter: blur(5px);
+    // Animations
+    transition: 0.2s;
+}
