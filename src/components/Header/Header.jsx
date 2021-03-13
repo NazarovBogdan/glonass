@@ -30,9 +30,11 @@ function Header() {
 
     const openBurger = () => {
         if (isBurgerOpened) {
+            document.body.style.overflow = 'scroll'
             handleBurger(false)
         }
         else {
+            document.body.style.overflow = 'hidden'
             handleBurger(true)
         }
         console.log(isBurgerOpened);
@@ -41,10 +43,10 @@ function Header() {
     let display = null
     let windowWidth = window.screen.width
 
-    if (windowWidth >= 320 && windowWidth < 760) {
+    if (windowWidth < 769) {
         display = 'isMobile'
     }
-    else if (windowWidth >= 760 && windowWidth < 1024) {
+    else if (windowWidth >= 769 && windowWidth < 1024) {
         display = 'isTablet'
     }
     else {
@@ -62,24 +64,29 @@ function Header() {
                     </div>
                     {display === 'isDesktop' &&
                         <React.Fragment>
-                            <TargetLink>
-                                +7 863 322-61-62
-                            </TargetLink>
-                            <TargetButton>
-                                Заказать звонок
-                            </TargetButton>
-                            <TargetButton>
-                                Демо wialon
-                            </TargetButton>
-                            <TargetButton>
-                                Демо omnicomm
-                            </TargetButton>
+                            <div className={style.name}>
+                                <h1>
+                                    Глонасс-Регионы
+                                </h1>
+                                <p>
+                                    Работаем по всей России
+                                </p>
+                            </div>
                             <form action="">
                                 <input
                                     type="search"
                                     className={style.searchField}
                                 />
                             </form>
+                            <TargetButton>
+                                Демо wialon
+                            </TargetButton>
+                            <TargetButton>
+                                Демо omnicomm
+                            </TargetButton>
+                            <TargetLink>
+                                +7 863 322-61-62
+                            </TargetLink>
                         </React.Fragment>
                     }
                     {display === 'isTablet' || display === 'isMobile' &&
@@ -90,13 +97,54 @@ function Header() {
                             />
                             {isBurgerOpened &&
                                 <React.Fragment>
-                                    <div className={style.background} onClick={openBurger} data-aos="fade">
-                                        <nav className={style.burgerMenu} data-aos="fade-left">
-                                            <Heading>
-
+                                    <div className={style.background} onClick={openBurger} data-aos="fade" />
+                                    <nav className={style.burgerMenu} data-aos="fade-left">
+                                        <Heading>
+                                            Контакты
                                             </Heading>
-                                        </nav>
-                                    </div>
+                                        <hr />
+                                        <Heading>
+                                            Навигация
+                                            </Heading>
+                                        <ul className={style.navLinksContainer}>
+                                            <li>
+                                                <NavLink
+                                                    className={style.navLink}
+                                                    activeClassName={style.selected}
+                                                    to="/"
+                                                >
+                                                    Главная
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={style.navLink}
+                                                    activeClassName={style.selected}
+                                                    to="/about"
+                                                >
+                                                    О компании
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={style.navLink}
+                                                    activeClassName={style.selected}
+                                                    to="/equipment"
+                                                >
+                                                    Оборудование
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={style.navLink}
+                                                    activeClassName={style.selected}
+                                                    to="/contacts"
+                                                >
+                                                    Контакты
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </React.Fragment>
                             }
                         </React.Fragment>

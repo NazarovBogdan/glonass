@@ -42,28 +42,28 @@ function EquipmentPage() {
                         Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
                     </Paragraph>
                     <div className={style.itemsContainer}>
-                        <NavLink to="#">
+                        <NavLink to="/category">
                             <div className={style.item}>
                                 <h3>
                                     Видеомониторинг
                                 </h3>
                             </div>
                         </NavLink>
-                        <NavLink to="#">
+                        <NavLink to="/category">
                             <div className={style.item}>
                                 <h3>
                                     Терминалы
                                 </h3>
                             </div>
                         </NavLink>
-                        <NavLink to="#">
+                        <NavLink to="/category">
                             <div className={style.item}>
                                 <h3>
                                     Датчики уровня топлива
                                 </h3>
                             </div>
                         </NavLink>
-                        <NavLink to="#">
+                        <NavLink to="/category">
                             <div className={style.item}>
                                 <h3>
                                     Дополнительное оборудование

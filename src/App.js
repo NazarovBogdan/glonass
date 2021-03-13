@@ -12,6 +12,7 @@ import Header from './components/Header/Header'
 import NavigationBar from './components/NavigationBar/NavigationBar'
 import Footer from './components/Footer/Footer'
 import UserForm from './components/UserForm/UserForm'
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 // Pages
 import MainPage from './pages/MainPage/MainPage'
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage'
@@ -36,32 +37,34 @@ const theme = {
 function App() {
     return (
         <BrowserRouter>
-            <Header />
-            <NavigationBar />
-            <Switch>
-                <Route path="/equipment">
-                    <EquipmentPage />
-                </Route>
-                <Route path="/contacts">
-                    <ContactsPage />
-                </Route>
-                <Route path="/about">
-                    <AboutUsPage />
-                </Route>
-                <Route path="/category">
-                    <CategoryPage />
-                </Route>
-                <Route path="/item">
-                    <ItemPage />
-                </Route>
-                <Route path="/">
-                    <MainPage />
-                </Route>
-                <Redirect path="/404">
-                </Redirect>
-            </Switch>
-            <UserForm />
-            <Footer />
+            <ScrollToTop>
+                <Header />
+                <NavigationBar />
+                <Switch>
+                    <Route path="/equipment">
+                        <EquipmentPage />
+                    </Route>
+                    <Route path="/contacts">
+                        <ContactsPage />
+                    </Route>
+                    <Route path="/about">
+                        <AboutUsPage />
+                    </Route>
+                    <Route path="/category">
+                        <CategoryPage />
+                    </Route>
+                    <Route path="/item">
+                        <ItemPage />
+                    </Route>
+                    <Route path="/">
+                        <MainPage />
+                    </Route>
+                    <Redirect path="/404">
+                    </Redirect>
+                </Switch>
+                <UserForm />
+                <Footer />
+            </ScrollToTop>
         </BrowserRouter>
     );
 }

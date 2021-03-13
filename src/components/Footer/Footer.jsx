@@ -46,10 +46,10 @@ function Footer() {
                             </ul>
                         </div>
                         <div className={style.buttons}>
-                            <TargetButton>
+                            <TargetButton style={{ minWidth: 150 }}>
                                 Демо wialon
                             </TargetButton>
-                            <TargetButton>
+                            <TargetButton style={{ minWidth: 150 }}>
                                 Демо omnicomm
                             </TargetButton>
                         </div>
@@ -102,17 +102,17 @@ function Footer() {
                                 <li>
                                     <TargetLink>
                                         Инновационное оборудование
-                                </TargetLink>
+                                    </TargetLink>
                                 </li>
                                 <li>
                                     <TargetLink>
                                         Терминалы
-                                </TargetLink>
+                                    </TargetLink>
                                 </li>
                                 <li>
                                     <TargetLink>
                                         Датчики уровня топлива
-                                </TargetLink>
+                                    </TargetLink>
                                 </li>
                             </ul>
                         </div>
@@ -123,7 +123,7 @@ function Footer() {
                         © 2021, Все права защищены
                         </p>
                     <TargetLink
-                        href="https://orangedm.agency/"
+                        to="https://orangedm.agency/"
                         target="_blank"
                     >
                         <img

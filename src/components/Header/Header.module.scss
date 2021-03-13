@@ -1,10 +1,21 @@
 .header {
     // Scale
     height: 50px;
-    @media screen and (max-width: 760px) {
-        height: 30px;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        margin: 0;
+        box-shadow: 0 0 5px grey;
     }
+    background-color: white;
     margin: 20px 0;
+}
+
+.header div:nth-child(1) {
+    height: 50px;
 }
 
 .container {
@@ -20,7 +31,7 @@
     // Scale
     height: 40px;
     width: 40px;
-    @media screen and (max-width: 760px) {
+    @media screen and (max-width: 768px) {
         height: 30px;
         width: 30px;
     }
@@ -40,6 +51,24 @@
     // Scale
     height: 100%;
     width: 100%;
+}
+
+.name {
+    // Scale
+    height: 100%;
+    // Location
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.name h1 {
+    font-size: 20px;
+    color: #006bcd;
+}
+
+.name p {
+    font-size: 12px;
 }
 
 .selectList {
@@ -64,7 +93,7 @@
 .searchField {
     // Scale
     height: 50px;
-    width: 50px;
+    width: 300px;
     padding-left: 50px;
     // Location
     position: relative;
@@ -76,22 +105,14 @@
     background-image: url("./../../images/icons/loupe-icon.svg");
     background-repeat: no-repeat;
     background-position: 17px center;
-    // Animation
-    transition: 0.2s;
-}
-
-.searchField:hover,
-.searchField:focus {
-    // Scale
-    width: 300px;
 }
 
 // Mobile
 
 .burger {
     // Scale
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     // Style
     background-image: url("./../../images/icons/burger-icon.svg");
     background-repeat: no-repeat;
@@ -106,6 +127,7 @@
     // Scale
     height: 100vh;
     width: 250px;
+    padding: 20px;
     // Location
     position: absolute;
     right: 0;
@@ -131,4 +153,9 @@
     backdrop-filter: blur(5px);
     // Animations
     transition: 0.2s;
+}
+
+.navLinksContainer {
+    // Style
+    list-style: none;
 }

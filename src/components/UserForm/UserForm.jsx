@@ -17,7 +17,7 @@ import Section from './../Section/Section'
 function UserForm() {
     return (
         <Section>
-            <Container>
+            <Container style={{ maxWidth: 900 }}>
                 <Heading>
                     Начните работать эффективно
                 </Heading>

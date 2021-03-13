@@ -12,6 +12,8 @@ import Heading from '../../components/Heading/Heading'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import TargetButton from '../../components/TargetButton/TargetButton'
 
+import item from './../CategoryPage/item.jpg'
+
 
 
 function ItemPage(props) {
@@ -26,16 +28,24 @@ function ItemPage(props) {
                     <div className={style.itemContainer}>
                         <div className={style.gallery}>
                             <div className={style.image}>
-                                <img src="" alt="" />
+                                <div>
+                                    <img src={item} alt="" />
+                                </div>
                             </div>
                             <div className={style.image}>
-                                <img src="" alt="" />
+                                <div>
+                                    <img src={item} alt="" />
+                                </div>
                             </div>
                             <div className={style.image}>
-                                <img src="" alt="" />
+                                <div>
+                                    <img src={item} alt="" />
+                                </div>
                             </div>
                             <div className={style.image}>
-                                <img src="" alt="" />
+                                <div>
+                                    <img src={item} alt="" />
+                                </div>
                             </div>
                         </div>
                         <div className={style.description}>
@@ -46,46 +56,112 @@ function ItemPage(props) {
                                 }}
                             >
                                 {props.itemName}
-                                Name
+                                Название товара
                             </Heading>
-                            <Paragraph style={{ textAlign: 'left' }}>
-                                {props.descrioption}
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus quaerat quas tempore modi nam explicabo, et itaque quam optio eius iusto voluptatum magni sint tenetur omnis vel cum, quia vitae? Id nesciunt, provident suscipit deleniti deserunt quasi expedita asperiores sint sapiente nemo itaque at aut incidunt? Officiis provident harum explicabo?
-                            </Paragraph>
-                        </div>
-                        <div>
-                            <ul className={style.features}>
+                            <div className={style.tableHeading} style={{ marginBottom: 30 }}>
+                                Особенности
+                            </div>
+                            <ul className={style.description}>
                                 <li>
-                                    <button>
-                                        Особенности
-                                    </button>
-                                    <div>
-                                        <ul>
-                                            {props.list}
-                                        </ul>
-                                    </div>
+                                    Питание через PoE ( Power over Ethernet)
                                 </li>
                                 <li>
-                                    <button>
-                                        Характеристики
-                                    </button>
-                                    <div>
-                                        <ul>
-                                            {props.list}
-                                        </ul>
-                                    </div>
+                                    Двойное стекло, антибликовое покрытие
+                                </li>
+                                <li>
+                                    24 светодиода LED
+                                </li>
+                                <li>
+                                    3.6 мм инфракрасные линзы
+                                </li>
+                                <li>
+                                    Инфракрасная лампа загорается автоматические, если окружающие условия ниже чем 5LU
                                 </li>
                             </ul>
-                        </div>
-                        <div className={style.priceContainer}>
                             <TargetButton>
                                 Заказать
                             </TargetButton>
-                            <hr />
-                            <Paragraph>
-                                {props.price}
-                                4500 руб.
-                            </Paragraph>
+                        </div>
+                        <div className={style.features}>
+                            <div className={style.tableHeading}>
+                                Характеристики
+                            </div>
+                            <table className={style.features}>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Материал корпуса
+                                        </td>
+                                        <td>
+                                            Метал
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Датчик изображения
+                                        </td>
+                                        <td>
+                                            1/3 SONY CCD
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Система
+                                        </td>
+                                        <td>
+                                            PAL/NTSC
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Вес, г
+                                        </td>
+                                        <td>
+                                            340
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Минимальная освещённость
+                                        </td>
+                                        <td>
+                                            0Lux/F1.2
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Линзы, мм
+                                        </td>
+                                        <td>
+                                            3.6
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Компенсация задней подстветки
+                                        </td>
+                                        <td>
+                                            Автоматическая
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Электронная затворка
+                                        </td>
+                                        <td>
+                                            1/50(1/60)-1/100, 000 сек
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Баланс белого
+                                        </td>
+                                        <td>
+                                            Автоматический
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </Container>

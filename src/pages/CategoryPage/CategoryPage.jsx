@@ -5,6 +5,8 @@ import style from './CategoryPage.module.scss'
 // AOS
 import Aos from 'aos'
 import '../../../node_modules/aos/dist/aos.css'
+// RRD
+import { NavLink } from 'react-router-dom'
 // Components
 import Subtitle from './../../components/Subtitle/Subtitle'
 import Section from './../../components/Section/Section'
@@ -14,6 +16,7 @@ import Paragraph from '../../components/Paragraph/Paragraph'
 import TargetButton from '../../components/TargetButton/TargetButton'
 // Data
 // import DATA from ''
+import item from './item.jpg'
 
 
 
@@ -23,31 +26,29 @@ function CategoryItem(props) {
         <div className={style.item}>
             <div className={style.itemPreview}>
                 <img
-                    src={props.preview}
-                    alt=""
+                    src={item}
                 />
             </div>
             <Paragraph
                 style={{
                     textAlign: 'left',
-                    margin: '20px 0'
+                    margin: '10px 0'
                 }}
             >
                 {props.name}
-                Name
+                Название товара
             </Paragraph>
             <div className={style.priceContainer}>
-                <Paragraph style={{ margin: 0 }}>
-                    {props.price}
-                    4500 руб.
-                </Paragraph>
-                <TargetButton
-                    style={{
-                        height: 40
-                    }}
-                >
-                    Подробнее
-                </TargetButton>
+                <NavLink to="/item">
+                    <TargetButton
+                        style={{
+                            height: 40,
+                            minWidth: 150
+                        }}
+                    >
+                        Подробнее
+                    </TargetButton>
+                </NavLink>
             </div>
         </div>
     )
@@ -67,7 +68,7 @@ function CategoryPage(props) {
                     </Subtitle>
                     <Heading>
                         {props.heading}
-                        Видеомониторинг
+                        Категория
                     </Heading>
                     <div className={style.itemsContainer}>
                         {/* {DATA.map(({}, i) => {

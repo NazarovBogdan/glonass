@@ -14,7 +14,7 @@
     width: 100%;
     // Location
     display: grid;
-    @media screen and (max-width: 760px) {
+    @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
         grid-gap: 2em;
     }
@@ -62,7 +62,7 @@
 }
 
 .textarea {
-    @media screen and (max-width: 760px) {
+    @media screen and (max-width: 768px) {
         display: none;
     }
     // Scale
@@ -94,7 +94,7 @@
     // Scale
     height: 50px;
     width: 200px;
-    @media screen and (max-width: 760px) {
+    @media screen and (max-width: 768px) {
         margin: 0 auto;
     }
     // Location
