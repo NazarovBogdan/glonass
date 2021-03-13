@@ -6,7 +6,7 @@ import style from './CategoryPage.module.scss'
 import Aos from 'aos'
 import '../../../node_modules/aos/dist/aos.css'
 // RRD
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 // Components
 import Subtitle from './../../components/Subtitle/Subtitle'
 import Section from './../../components/Section/Section'
@@ -14,8 +14,8 @@ import Container from './../../components/Container/Container'
 import Heading from '../../components/Heading/Heading'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import TargetButton from '../../components/TargetButton/TargetButton'
-// Data
-// import DATA from ''
+// API
+import { setItemsCategory } from './../../components/API/API'
 import item from './item.jpg'
 
 
@@ -55,9 +55,21 @@ function CategoryItem(props) {
 }
 
 function CategoryPage(props) {
+
+    console.log(props);
+
+    useEffect(() => {
+        const DATA = new FormData()
+        DATA.append("category", props.category)
+        setItemsCategory(DATA)
+    }, [])
+
+
     useEffect(() => {
         Aos.init({ duration: 700 });
     }, [])
+
+    let { slug } = useParams()
 
     return (
         <main data-aos="fade">

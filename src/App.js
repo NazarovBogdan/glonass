@@ -1,11 +1,12 @@
 // React
-import React from 'react'
+import React, { useState } from 'react'
 // RRD
 import {
     Route,
     Redirect,
     Switch,
-    BrowserRouter
+    BrowserRouter,
+    useParams
 } from 'react-router-dom'
 // Components
 import Header from './components/Header/Header'
@@ -23,18 +24,14 @@ import ItemPage from './pages/ItemPage/ItemPage'
 
 
 
-const theme = {
-    dark: {
-        primary: '',
-        secondly: ''
-    },
-    light: {
-        primary: '',
-        secondly: ''
-    }
-}
-
 function App() {
+
+    const [category, setNewName] = useState()
+
+    function setName(categoryName) {
+        setNewName(categoryName)
+    }
+
     return (
         <BrowserRouter>
             <ScrollToTop>
@@ -42,7 +39,7 @@ function App() {
                 <NavigationBar />
                 <Switch>
                     <Route path="/equipment">
-                        <EquipmentPage />
+                        <EquipmentPage categoryName={setName} />
                     </Route>
                     <Route path="/contacts">
                         <ContactsPage />
@@ -51,9 +48,9 @@ function App() {
                         <AboutUsPage />
                     </Route>
                     <Route path="/category">
-                        <CategoryPage />
+                        <CategoryPage category={category} />
                     </Route>
-                    <Route path="/item">
+                    <Route path="/equipment/category/item">
                         <ItemPage />
                     </Route>
                     <Route path="/">

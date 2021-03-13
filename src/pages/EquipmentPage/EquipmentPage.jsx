@@ -22,10 +22,14 @@ import equipmentItem from './images/content/equipment-item.png'
 
 
 
-function EquipmentPage() {
+function EquipmentPage(props) {
     useEffect(() => {
         Aos.init({ duration: 700 });
     }, [])
+
+    const setName = (newValue) => {
+        props.categoryName(newValue)
+    }
 
     return (
         <main data-aos="fade">
@@ -42,28 +46,36 @@ function EquipmentPage() {
                         Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
                     </Paragraph>
                     <div className={style.itemsContainer}>
-                        <NavLink to="/category">
+                        <NavLink to="/category/video" onClick={() => {
+                            setName("video")
+                        }}>
                             <div className={style.item}>
                                 <h3>
                                     Видеомониторинг
                                 </h3>
                             </div>
                         </NavLink>
-                        <NavLink to="/category">
+                        <NavLink to="/category/terminals" onClick={() => {
+                            setName("terminals")
+                        }}>
                             <div className={style.item}>
                                 <h3>
                                     Терминалы
                                 </h3>
                             </div>
                         </NavLink>
-                        <NavLink to="/category">
+                        <NavLink to="/category/sensors" onClick={() => {
+                            setName("sensors")
+                        }}>
                             <div className={style.item}>
                                 <h3>
                                     Датчики уровня топлива
                                 </h3>
                             </div>
                         </NavLink>
-                        <NavLink to="/category">
+                        <NavLink to="/category/other-eqipments" onClick={() => {
+                            setName("other-eqipments")
+                        }}>
                             <div className={style.item}>
                                 <h3>
                                     Дополнительное оборудование
