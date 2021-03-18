@@ -4,10 +4,15 @@
     min-width: 200px;
     // Location
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     // Style
     border-radius: 25px;
-    border: 1px solid #006bcd;
-    color: #006bcd;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #023872;
+    color: #023872;
     background-color: transparent;
     cursor: pointer;
     outline: none;
@@ -20,6 +25,6 @@
     bottom: 2px;
     // Style
     box-shadow: 0px 9px 29px rgba(0, 0, 0, .25);
-    background-color: #006bcd;
+    background-color: #023872;
     color: white;
 }

@@ -6,7 +6,6 @@ import {
     Redirect,
     Switch,
     BrowserRouter,
-    useParams
 } from 'react-router-dom'
 // Components
 import Header from './components/Header/Header'
@@ -21,46 +20,61 @@ import EquipmentPage from './pages/EquipmentPage/EquipmentPage'
 import ContactsPage from './pages/ContactsPage/ContactsPage'
 import CategoryPage from './pages/CategoryPage/CategoryPage'
 import ItemPage from './pages/ItemPage/ItemPage'
+import IndustryPage from './pages/IndustryPage/IndustryPage'
+import AdminPage from './pages/AdminPage/AdminPage'
 
 
 
 function App() {
-
     const [category, setNewName] = useState()
+    const [category2, setNewNameCat] = useState()
 
-    function setName(categoryName) {
+    function setName(categoryName, categoryName2) {
         setNewName(categoryName)
+        setNewNameCat(categoryName2)
+
     }
 
     return (
         <BrowserRouter>
             <ScrollToTop>
-                <Header />
-                <NavigationBar />
                 <Switch>
-                    <Route path="/equipment">
-                        <EquipmentPage categoryName={setName} />
-                    </Route>
-                    <Route path="/contacts">
-                        <ContactsPage />
-                    </Route>
-                    <Route path="/about">
-                        <AboutUsPage />
-                    </Route>
-                    <Route path="/category">
-                        <CategoryPage category={category} />
-                    </Route>
-                    <Route path="/equipment/category/item">
-                        <ItemPage />
+                    <Route path="/admin">
+                        <Route path="/admin">
+                            <AdminPage />
+                        </Route>
                     </Route>
                     <Route path="/">
-                        <MainPage />
+                        <Header />
+                        <NavigationBar />
+                        <Switch>
+                            <Route path="/equipment">
+                                <EquipmentPage categoryName={setName} />
+                            </Route>
+                            <Route path="/contacts">
+                                <ContactsPage />
+                            </Route>
+                            <Route path="/about">
+                                <AboutUsPage />
+                            </Route>
+                            <Route path="/industry">
+                                <IndustryPage />
+                            </Route>
+                            <Route path="/category">
+                                <CategoryPage category={category} heading={category2} />
+                            </Route>
+                            <Route path="/equipment/category/item">
+                                <ItemPage />
+                            </Route>
+                            <Route path="/main">
+                                <MainPage />
+                            </Route>
+                            <Redirect to="/main" />
+                        </Switch>
+                        <UserForm />
+                        <Footer />
                     </Route>
-                    <Redirect path="/404">
-                    </Redirect>
                 </Switch>
-                <UserForm />
-                <Footer />
             </ScrollToTop>
         </BrowserRouter>
     );

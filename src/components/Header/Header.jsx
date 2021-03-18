@@ -17,7 +17,6 @@ import Container from './../Container/Container'
 import Heading from '../Heading/Heading'
 // Icons
 import logo from './../../images/logo/logotype.svg'
-import burger from './../../images/icons/burger-icon.svg'
 
 
 
@@ -58,7 +57,7 @@ function Header() {
             <Container>
                 <div className={style.container}>
                     <div className={style.logo}>
-                        <NavLink to="/">
+                        <NavLink to="/main">
                             <img src={logo} alt="Логотип" />
                         </NavLink>
                     </div>
@@ -78,18 +77,18 @@ function Header() {
                                     className={style.searchField}
                                 />
                             </form>
-                            <TargetButton>
+                            <TargetButton tag="a" href="https://hosting.wialon.com/" target="_blank">
                                 Демо wialon
                             </TargetButton>
-                            <TargetButton>
+                            <TargetButton tag="a" href="https://online.omnicomm.ru/" target="_blank">
                                 Демо omnicomm
                             </TargetButton>
-                            <TargetLink>
+                            <TargetLink tag="a" href="tel:+78633226162">
                                 +7 863 322-61-62
                             </TargetLink>
                         </React.Fragment>
                     }
-                    {display === 'isTablet' || display === 'isMobile' &&
+                    {(display === 'isTablet' || display === 'isMobile') &&
                         <React.Fragment>
                             <button
                                 className={style.burger}

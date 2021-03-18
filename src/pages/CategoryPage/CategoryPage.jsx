@@ -1,5 +1,5 @@
 // React
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 // Style
 import style from './CategoryPage.module.scss'
 // AOS
@@ -22,8 +22,12 @@ import item from './item.jpg'
 
 
 function CategoryItem(props) {
+    useEffect(() => {
+        Aos.init({ duration: 700 })
+    })
+
     return (
-        <div className={style.item}>
+        <div className={style.item} data-aos="fade">
             <div className={style.itemPreview}>
                 <img
                     src={item}
@@ -36,40 +40,35 @@ function CategoryItem(props) {
                 }}
             >
                 {props.name}
-                Название товара
             </Paragraph>
             <div className={style.priceContainer}>
-                <NavLink to="/item">
-                    <TargetButton
-                        style={{
-                            height: 40,
-                            minWidth: 150
-                        }}
-                    >
-                        Подробнее
+                <TargetButton
+                    tag="nav"
+                    to="/item"
+                    style={{
+                        height: 40,
+                        minWidth: 150
+                    }}
+                >
+                    Подробнее
                     </TargetButton>
-                </NavLink>
             </div>
         </div>
     )
 }
 
 function CategoryPage(props) {
-
-    console.log(props);
+    const [categoryItem, setItems] = useState()
 
     useEffect(() => {
+        Aos.init({ duration: 700 })
+
         const DATA = new FormData()
         DATA.append("category", props.category)
-        setItemsCategory(DATA)
-    }, [])
-
-
-    useEffect(() => {
-        Aos.init({ duration: 700 });
-    }, [])
-
-    let { slug } = useParams()
+        setItemsCategory(DATA).then(response => {
+            setItems(response.map(i => <CategoryItem key={i.id} name={i.name} />))
+        })
+    })
 
     return (
         <main data-aos="fade">
@@ -80,26 +79,9 @@ function CategoryPage(props) {
                     </Subtitle>
                     <Heading>
                         {props.heading}
-                        Категория
                     </Heading>
                     <div className={style.itemsContainer}>
-                        {/* {DATA.map(({}, i) => {
-                            return(
-                                <CategoryItem
-                                    key={i}
-                                >
-                                    {DATA}
-                                </CategoryItem>
-                            )
-                        })} */}
-                        <CategoryItem />
-                        <CategoryItem />
-                        <CategoryItem />
-                        <CategoryItem />
-                        <CategoryItem />
-                        <CategoryItem />
-                        <CategoryItem />
-                        <CategoryItem />
+                        {categoryItem}
                     </div>
                 </Container>
             </Section>

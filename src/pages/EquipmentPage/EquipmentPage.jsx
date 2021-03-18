@@ -1,5 +1,5 @@
 // React
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 // Style
 import style from './EquipmentPage.module.scss'
 // RRD
@@ -27,8 +27,8 @@ function EquipmentPage(props) {
         Aos.init({ duration: 700 });
     }, [])
 
-    const setName = (newValue) => {
-        props.categoryName(newValue)
+    const setName = (newValue, categoryname) => {
+        props.categoryName(newValue, categoryname)
     }
 
     return (
@@ -47,7 +47,7 @@ function EquipmentPage(props) {
                     </Paragraph>
                     <div className={style.itemsContainer}>
                         <NavLink to="/category/video" onClick={() => {
-                            setName("video")
+                            setName("video",  "Видеомониторинг")
                         }}>
                             <div className={style.item}>
                                 <h3>
@@ -56,7 +56,8 @@ function EquipmentPage(props) {
                             </div>
                         </NavLink>
                         <NavLink to="/category/terminals" onClick={() => {
-                            setName("terminals")
+                            setName("terminals" ,  "Терминалы")
+                            console.log(true);
                         }}>
                             <div className={style.item}>
                                 <h3>
@@ -65,7 +66,7 @@ function EquipmentPage(props) {
                             </div>
                         </NavLink>
                         <NavLink to="/category/sensors" onClick={() => {
-                            setName("sensors")
+                            setName("sensors",  "Датчики уровня топлива")
                         }}>
                             <div className={style.item}>
                                 <h3>
@@ -74,7 +75,7 @@ function EquipmentPage(props) {
                             </div>
                         </NavLink>
                         <NavLink to="/category/other-eqipments" onClick={() => {
-                            setName("other-eqipments")
+                            setName("other-eqipments",  "Дополнительное оборудование")
                         }}>
                             <div className={style.item}>
                                 <h3>

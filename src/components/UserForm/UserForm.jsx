@@ -11,6 +11,8 @@ import Heading from './../Heading/Heading'
 import Paragraph from './../Paragraph/Paragraph'
 import Container from './../Container/Container'
 import Section from './../Section/Section'
+import Subtitle from './../Subtitle/Subtitle'
+import TargetLink from './../TargetLink/TargetLink'
 
 
 
@@ -44,12 +46,18 @@ function UserForm() {
                                 <Field className={style.input} name="email" placeholder="E-mail" />
                             </div>
                             <div>
-                                <textarea
+                                <Field
+                                    component="textarea"
                                     name="text"
                                     id=""
                                     className={style.textarea}
                                     placeholder="Комментарий"
-                                ></textarea>
+                                />
+                                <Subtitle>
+                                    Нажимая "Отправить", я соглашаюсь с <br />
+                                    <a target="_blank" href="" className={style.link}>политикой конфеденциальности</a>
+                                    <br /> компании
+                                </Subtitle>
                                 <button className={style.button}>
                                     Отправить
                                 </button>
