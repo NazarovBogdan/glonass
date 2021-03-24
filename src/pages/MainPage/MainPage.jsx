@@ -1,5 +1,5 @@
 // React
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 // Style
 import style from './MainPage.module.scss'
 // AOS
@@ -18,6 +18,7 @@ import Section from './../../components/Section/Section'
 import Container from './../../components/Container/Container'
 import ModalWindow from './../../components/ModalWindow/ModalWindow'
 import Subtitle from '../../components/Subtitle/Subtitle'
+import { PreviewMobile } from './../../components/PreviewMobile/PreviewMobile'
 // Images
 import mechItem from './images/content/mech-item.svg'
 import deskItem from './images/content/desk-item.svg'
@@ -41,7 +42,7 @@ import video from './../../videos/bg-video.mp4'
 
 function Card(props) {
     return (
-        <div className={style.card} style={{backgroundImage: `url(${props.bgImage})`}}>
+        <div className={style.card} style={{ backgroundImage: `url(${props.bgImage})` }}>
             <h3 className={style.cardHeading}>
                 {props.text}
             </h3>
@@ -56,10 +57,6 @@ function MainPage() {
     const openModal = () => {
         isModalOpened === true ? showModal(false) : showModal(true)
     }
-
-    useEffect(() => {
-        Aos.init({ duration: 700 });
-    }, [])
 
     const cards = [
         {
@@ -80,66 +77,97 @@ function MainPage() {
         }
     ]
 
+    const [isMobile, changeLoupe] = useState(false)
+
+    const setLoupe = () => {
+        if (window.screen.width <= 1024) {
+            changeLoupe(true)
+        }
+        else {
+            changeLoupe(false)
+        }
+    }
+
+    useEffect(() => {
+        Aos.init({ duration: 700 });
+        setLoupe()
+    }, [])
+
     return (
         <main data-aos="fade">
             <ModalWindow onClose={openModal} isOpen={isModalOpened} />
-            <Section>
-                <div className={style.preview}>
-                    <video
-                        className={style.video}
-                        loop="loop"
-                        autoPlay
-                        muted
-                    >
-                        <source src={video} type="video/mp4" />
-                    </video>
-                    <div className={style.previewContainer}>
-                        <Subtitle
-                            style={{
-                                textAlign: 'left',
-                                color: 'white',
-                                textShadow: '0 0 5px black',
-                                marginBottom: 30
-                            }}
+            {!isMobile &&
+                <Section>
+                    <div className={style.preview}>
+                        <video
+                            className={style.video}
+                            loop="loop"
+                            autoPlay
+                            muted
                         >
-                            Система мониторинга транспорта
+                            <source src={video} type="video/mp4" />
+                        </video>
+                        <div className={style.previewContainer}>
+                            <Subtitle
+                                style={{
+                                    textAlign: 'left',
+                                    color: 'white',
+                                    textShadow: '0 0 5px black',
+                                    marginBottom: 30
+                                }}
+                            >
+                                Система мониторинга транспорта
                             </Subtitle>
-                        <Heading
-                            style={{
-                                textAlign: 'left',
-                                color: 'white',
-                                textShadow: '0 0 5px black',
-                                marginBottom: 30
-                            }}
-                        >
-                            GLONASS REGIONS
+                            <Heading
+                                style={{
+                                    textAlign: 'left',
+                                    color: 'white',
+                                    textShadow: '0 0 5px black',
+                                    marginBottom: 30
+                                }}
+                            >
+                                GLONASS REGIONS
                             </Heading>
-                        <Paragraph
-                            style={{
-                                textAlign: 'left',
-                                color: 'white',
-                                textShadow: '0 0 5px black',
-                                marginBottom: 30
-                            }}
-                        >
-                            Мы занимаемся разработкой и внедрением комплексных решений по мониторингу транспорта для всех типов подвижных и стационарных объектов.
+                            <Paragraph
+                                style={{
+                                    textAlign: 'left',
+                                    color: 'white',
+                                    textShadow: '0 0 5px black',
+                                    marginBottom: 30
+                                }}
+                            >
+                                Мы занимаемся разработкой и внедрением комплексных решений по мониторингу транспорта для всех типов подвижных и стационарных объектов.
                             </Paragraph>
-                        <TargetButton onClick={openModal} style={{ width: 150, border: '1px solid white', color: 'white' }}>
-                            Начать работу
-                        </TargetButton>
+                            <TargetButton onClick={openModal} style={{ width: 150, margin: 0, border: '1px solid white', color: 'white' }}>
+                                Начать работу
+                            </TargetButton>
+                        </div>
                     </div>
-                </div>
-            </Section>
+                </Section>
+            }
+            {isMobile &&
+                <PreviewMobile
+                    seporator
+                    heading="GLONASS/GPS"
+                >
+                    Система мониторинга транспорта
+                </PreviewMobile>
+            }
+
             <Section>
                 <Container>
-                    <Heading>
-                        Система мониторинга транспорта<br />
-                        GLONASS/GPS
-                    </Heading>
-                    <Seporator />
-                    <Paragraph>
-                        Мы занимаемся разработкой и внедрением комплексных решений по мониторингу транспорта для всех типов подвижных и стационарных объектов.
-                    </Paragraph>
+                    {!isMobile &&
+                        <Fragment>
+                            <Heading>
+                                Система мониторинга транспорта<br />
+                                GLONASS/GPS
+                            </Heading>
+                            <Seporator />
+                            <Paragraph>
+                                Мы занимаемся разработкой и внедрением комплексных решений по мониторингу транспорта для всех типов подвижных и стационарных объектов.
+                            </Paragraph>
+                        </Fragment>
+                    }
                     <div className={style.rowContainer}>
                         <div className={style.rowContainerItem}>
                             <img
@@ -178,7 +206,7 @@ function MainPage() {
                             <Paragraph>
                                 Готовые решения
                             </Paragraph>
-                            <TargetButton tag="nav" to="/main">
+                            <TargetButton tag="nav" to="/industry">
                                 Подробнее
                             </TargetButton>
                         </div>
@@ -193,7 +221,7 @@ function MainPage() {
                         margin: '0 auto'
                     }}
                 >
-                    <Heading style={{ textAlign: 'left' }}>
+                    <Heading style={{ textAlign: 'left', marginLeft: 20 }}>
                         Почему выбирают нас
                     </Heading>
                 </div>
@@ -201,14 +229,13 @@ function MainPage() {
                     loop
                     centeredSlides
                     slidesPerView="auto"
-                    spaceBetween={20}
+                    spaceBetween={isMobile ? 10 : 20}
                     style={{ paddingBottom: 70 }}
                     className={style.slider}
                 >
                     {cards.map(({ text, bgImage }, i) => {
-                        console.log(bgImage);
                         return (
-                            <SwiperSlide key={i} style={{ width: 450 }}>
+                            <SwiperSlide key={i} style={{ width: isMobile ? 280 : 450 }}>
                                 <Card
                                     bgImage={bgImage}
                                     key={i}
@@ -225,7 +252,7 @@ function MainPage() {
                         Как это устроено
                     </Heading>
                     <div className={style.columnContainer}>
-                        <div data-aos="fade-up">
+                        <div data-aos={"fade-up"}>
                             <Paragraph style={{ marginBottom: 0 }}>
                                 Передача сигнала спутником на устройство в вашей машине
                             </Paragraph>
@@ -236,7 +263,7 @@ function MainPage() {
                             />
                         </div>
                         <hr className={style.columnContainerSeporator} />
-                        <div data-aos="fade-up">
+                        <div data-aos={"fade-up"}>
                             <img
                                 className={style.image}
                                 src={trackItem}
@@ -247,7 +274,7 @@ function MainPage() {
                             </Paragraph>
                         </div>
                         <hr className={style.columnContainerSeporator} />
-                        <div data-aos="fade-up">
+                        <div data-aos={"fade-up"}>
                             <Paragraph style={{ marginBottom: 0 }}>
                                 Доступ к Omnicomm Online осуществляется через web-интерфейс с любого устройства
                             </Paragraph>
@@ -258,7 +285,7 @@ function MainPage() {
                             />
                         </div>
                         <hr className={style.columnContainerSeporator} />
-                        <div data-aos="fade-up">
+                        <div data-aos={"fade-up"}>
                             <img
                                 className={style.image}
                                 src={cloudItem}
@@ -275,105 +302,49 @@ function MainPage() {
                 <Container>
                     <div className={style.software}>
                         <div className={style.softwareInner}>
-                            <Heading style={{ textAlign: 'left' }}>
-                                <span className={style.softwareHeading}>Программное</span><br />обеспечение
-                            </Heading>
+                            <h2 className={style.softwareHeading}>
+                                <span className={style.softwareHeadingSpan}>Программное </span><br />обеспечение
+                            </h2>
                             <div className={style.itemsBox}>
                                 <div>
-                                    <Paragraph
-                                        style={{
-                                            textAlign: 'left',
-                                            marginBottom: 5,
-                                            textTransform: 'uppercase',
-                                            fontSize: 17,
-                                            fontWeight: 700,
-                                        }}
+                                    <p
                                         className={style.itemsHeading}
                                     >
                                         Пресекает нецелевое использование транспорта
-                                    </Paragraph>
-                                    <Paragraph
-                                        style={{
-                                            textAlign: 'left',
-                                            marginBottom: 0,
-                                            fontSize: 14,
-                                            width: 210
-                                        }}
-                                    >
+                                    </p>
+                                    <p className={style.itemsParagraph}>
                                         Выезд из рабочей геозоны (или поездка вне маршрута)
-                                    </Paragraph>
+                                    </p>
                                 </div>
                                 <div>
-                                    <Paragraph
-                                        style={{
-                                            textAlign: 'left',
-                                            marginBottom: 5,
-                                            textTransform: 'uppercase',
-                                            fontSize: 17,
-                                            fontWeight: 700
-                                        }}
+                                    <p
                                         className={style.itemsHeading}
                                     >
                                         контролирует расход топлива вашего транспорта
-                                    </Paragraph>
-                                    <Paragraph
-                                        style={{
-                                            textAlign: 'left',
-                                            marginBottom: 0,
-                                            fontSize: 14,
-                                            width: 210
-                                        }}
-                                    >
-                                        Посменный отчёт, включающий время движения Tc и расход топлива
-                                    </Paragraph>
+                                    </p>
+                                    <p className={style.itemsParagraph}>
+                                        Посменный отчёт, включающий время движения TС и расход топлива
+                                    </p>
                                 </div>
                                 <div>
-                                    <Paragraph
-                                        style={{
-                                            textAlign: 'left',
-                                            marginBottom: 5,
-                                            textTransform: 'uppercase',
-                                            fontSize: 17,
-                                            fontWeight: 700
-                                        }}
+                                    <p
                                         className={style.itemsHeading}
                                     >
                                         Следит за работой автопарка и водителей
-                                    </Paragraph>
-                                    <Paragraph
-                                        style={{
-                                            textAlign: 'left',
-                                            marginBottom: 0,
-                                            fontSize: 14,
-                                            width: 210
-                                        }}
-                                    >
+                                    </p>
+                                    <p className={style.itemsParagraph}>
                                         Посменный отчёт, включающий время движения Tc и расход топлива
-                                    </Paragraph>
+                                    </p>
                                 </div>
                                 <div>
-                                    <Paragraph
-                                        style={{
-                                            textAlign: 'left',
-                                            marginBottom: 5,
-                                            textTransform: 'uppercase',
-                                            fontSize: 17,
-                                            fontWeight: 700
-                                        }}
+                                    <p
                                         className={style.itemsHeading}
                                     >
                                         сокращение времени доставки
-                                    </Paragraph>
-                                    <Paragraph
-                                        style={{
-                                            textAlign: 'left',
-                                            marginBottom: 0,
-                                            fontSize: 14,
-                                            width: 210
-                                        }}
-                                    >
+                                    </p>
+                                    <p className={style.itemsParagraph}>
                                         Посменный отчёт, включающий время движения TC и расход топлива
-                                    </Paragraph>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -381,20 +352,20 @@ function MainPage() {
                             <img
                                 src={softwareImage1}
                                 alt=""
-                                data-aos="fade-up"
+                                data-aos={"fade-up"}
                             />
                             <img
                                 src={softwareImage2}
-                                data-aos="fade-up"
+                                data-aos={"fade-up"}
                             />
                             <img
                                 src={softwareImage3}
                                 alt=""
-                                data-aos="fade-up"
+                                data-aos={"fade-up"}
                             />
                             <img
                                 src={softwareImage4}
-                                data-aos="fade-up"
+                                data-aos={"fade-up"}
                             />
                         </div>
                     </div>

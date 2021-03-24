@@ -6,6 +6,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
     // Style
     background-color: white;
     background-image: url("./../../images/content/main-bg.png");
@@ -14,12 +18,39 @@
     background-repeat: no-repeat;
     border-radius: 20px;
     box-shadow: 0 30px 40px rgba(0, 0, 0, 0.5);
+    @media screen and (max-width: 1024px) {
+        height: 100vh;
+        width: 100vw;
+        border-radius: 0;
+        transform: none;
+        top: 0;
+        left: 0;
+        padding: 30px 20px;
+    }
+}
+
+.overlay {
+    z-index: 2;
+}
+
+.heading {
+    margin-bottom: 45px;
+    font-size: 26px;
+    text-align: center;
+    @media screen and (max-width: 1024px) {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
 }
 
 .closeButton {
     // Scale
     height: 40px;
     width: 40px;
+    @media screen and (max-width: 1024px) {
+        height: 20px;
+        width: 20px;
+    }
     // Location
     display: flex;
     justify-content: center;
@@ -33,12 +64,12 @@
     background-color: transparent;
     cursor: pointer;
     // Animation
-    transition: .2s;
+    transition: 0.2s;
 }
 
 .closeButton:hover {
     // Style
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.13);
 }
 
 .closeButton span {
@@ -47,25 +78,62 @@
     color: #ff9900;
     font-size: 40px;
     font-weight: 100;
+    @media screen and (max-width: 1024px) {
+        font-size: 20px;
+    }
 }
 
 .form {
     // Location
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.input,
+.textarea {
+    // Scale
+    width: 350px;
+    padding: 20px 20px;
+    @media screen and (max-width: 1024px) {
+        max-width: 300px;
+        width: 100%;
+    }
+    // Style
+    border-radius: 25px;
+    border: none;
+    background-color: #ececec;
+    font-family: Montserrat;
+    font-weight: 100;
+    transition: 0.2s;
+    position: relative;
 }
 
 .input {
     // Scale
     height: 50px;
-    width: 350px;
-    // Style
-    border-radius: 25px;
-    border: none;
-    background-color: #ececec;
 }
 
-.input:not(:last-child) {
+.textarea {
+    height: 200px;
+    @media screen and (max-width: 1024px) {
+        height: 100px;
+    }
+    resize: none;
+}
+
+.input,
+.textarea {
     // Scale
-    margin-bottom: 20px;
+    &:not(:last-child) {
+        margin-bottom: 20px;
+        @media screen and (max-width: 1024px) {
+            margin-bottom: 10px;
+        }
+    }
+    &:hover,
+    &:focus {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.13);
+        bottom: 2px;
+    }
 }

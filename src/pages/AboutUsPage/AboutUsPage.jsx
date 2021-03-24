@@ -1,5 +1,5 @@
 // React
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 // Style
 import style from './AboutUsPage.module.scss'
 // AOS
@@ -11,6 +11,7 @@ import Section from './../../components/Section/Section'
 import Container from './../../components/Container/Container'
 import Heading from './../../components/Heading/Heading'
 import Paragraph from './../../components/Paragraph/Paragraph'
+import { PreviewMobile } from './../../components/PreviewMobile/PreviewMobile'
 // Images
 import aerialItem from './images/content/aerial-item.svg'
 import gazItem from './images/content/gaz-item.svg'
@@ -18,39 +19,71 @@ import mapItem from './images/content/map-item.svg'
 import markerItem from './images/content/marker-item.svg'
 import trackDropItem from './images/content/track-drop-item.svg'
 import trackItem from './images/content/track-item.svg'
+// Logos
+import logo1 from './images/content/logo-1.png'
+import logo2 from './images/content/logo-2.png'
+import logo3 from './images/content/logo-3.png'
+import logo4 from './images/content/logo-4.png'
+import logo5 from './images/content/logo-5.png'
+import logo6 from './images/content/logo-6.png'
+import logo7 from './images/content/logo-7.png'
+import logo8 from './images/content/logo-8.png'
+import logo9 from './images/content/logo-9.png'
+import logo10 from './images/content/logo-10.png'
+import logo11 from './images/content/logo-11.png'
+import logo12 from './images/content/logo-12.png'
 
 
 
 function AboutUsPage() {
+    const [isMobile, changeLoupe] = useState(false)
+
+    const setLoupe = () => {
+        if (window.screen.width <= 1024) {
+            changeLoupe(true)
+        }
+        else {
+            changeLoupe(false)
+        }
+    }
+
     useEffect(() => {
         Aos.init({ duration: 700 });
+        setLoupe()
     }, [])
 
     return (
         <main data-aos="fade">
-            <Section style={{ padding: '0 20px' }}>
-                <div className={style.preview}>
-                    <Container style={{ display: 'block' }}>
-                        <div className={style.previewContent}>
-                            <p className={style.subtitle}>
-                                Глонасс-Регионы
+            {!isMobile &&
+                <Section style={{ padding: '0 20px' }}>
+                    <div className={style.preview}>
+                        <Container style={{ display: 'block' }}>
+                            <div className={style.previewContent}>
+                                <p className={style.subtitle}>
+                                    Глонасс-Регионы
                             </p>
-                            <Heading
-                                style={{ textAlign: 'left' }}
-                            >
-                                О компании
-                            </Heading>
-                            <Seporator />
-                            <Paragraph style={{ textAlign: 'left' }}>
-                                Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
-                            </Paragraph>
-                            <Paragraph style={{ textAlign: 'left' }}>
-                                Мы занимаемся разработкой и внедрением комплексных решений по мониторингу транспорта для всех типов подвижных и стационарных объектов с пожизненной гарантией и качественным сервисом.
-                            </Paragraph>
-                        </div>
-                    </Container>
-                </div>
-            </Section>
+                                <Heading
+                                    style={{ textAlign: 'left' }}
+                                >
+                                    О компании
+                        </Heading>
+                                <Seporator />
+                                <Paragraph style={{ textAlign: 'left' }}>
+                                    Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
+                        </Paragraph>
+                                <Paragraph style={{ textAlign: 'left' }}>
+                                    Мы занимаемся разработкой и внедрением комплексных решений по мониторингу транспорта для всех типов подвижных и стационарных объектов с пожизненной гарантией и качественным сервисом.
+                        </Paragraph>
+                            </div>
+                        </Container>
+                    </div>
+                </Section>
+            }
+            {isMobile &&
+                <PreviewMobile heading="О компании" seporator>
+                    Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
+                </PreviewMobile>
+            }
 
             <Section>
                 <Container>
@@ -98,6 +131,51 @@ function AboutUsPage() {
                             <Paragraph>
                                 Предотвращение нецелевого использования техники
                             </Paragraph>
+                        </div>
+                    </div>
+                </Container>
+            </Section>
+            <Section>
+                <Container>
+                    <Heading>
+                        Наши клиенты
+                    </Heading>
+                    <div className={style.partnersContainer}>
+                        <div data-aos="fade-up">
+                            <img src={logo1} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo2} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo7} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo4} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo6} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo11} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo8} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo9} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo5} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo10} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo12} alt="" />
+                        </div>
+                        <div data-aos="fade-up">
+                            <img src={logo3} alt="" />
                         </div>
                     </div>
                 </Container>

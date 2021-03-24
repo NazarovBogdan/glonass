@@ -4,7 +4,7 @@
     // Location
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         grid-template-columns: 1fr;
     }
     grid-column-gap: 3em;
@@ -15,7 +15,7 @@
     // Scale
     height: 450px;
     width: 700px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         width: 100%;
         height: 200px;
     }
@@ -32,8 +32,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @media screen and (max-width: 768px) {
-        order: -1;
+    @media screen and (max-width: 1024px) {
+        order: 1;
+        text-align: center;
     }
 }
 

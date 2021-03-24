@@ -19,11 +19,11 @@
     @media screen and (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         grid-template-columns: 1fr;
     }
-    grid-template-columns: repeat(3, 330px);
-    grid-gap: 3em;
+    grid-row-gap: 2em;
+    grid-template-columns: repeat(3, auto);
     justify-content: space-between;
 }
 

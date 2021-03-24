@@ -1,37 +1,52 @@
+.isDesk {
+    @media screen and (max-width: 1025px) {
+        display: none;
+    }
+    @media screen and (max-width: 1024px) {
+        justify-content: space-around;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobileHeader {
+    display: flex;
+}
+
+.isMobile {
+    @media screen and (min-width: 1025px) {
+        display: none;
+    }
+}
+
 .header {
     // Scale
     height: 50px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         width: 100%;
         position: fixed;
         left: 0;
         top: 0;
         z-index: 1;
         margin: 0;
-        box-shadow: 0 0 5px grey;
+        background-color: transparent;
     }
-    background-color: white;
     margin: 20px 0;
-}
-
-.header div:nth-child(1) {
-    height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 .container {
     max-width: 1140px;
     width: 100%;
-    // Location
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .logo {
     // Scale
     height: 40px;
     width: 40px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         height: 30px;
         width: 30px;
     }
@@ -60,6 +75,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    @media screen and (max-width: 1090px) {
+        display: none;
+    }
 }
 
 .name h1 {
@@ -109,30 +127,19 @@
 
 // Mobile
 
-.burger {
-    // Scale
-    height: 30px;
-    width: 30px;
-    // Style
-    background-image: url("./../../images/icons/burger-icon.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    border: none;
-    background-color: transparent;
-    outline: none;
-}
-
 .burgerMenu {
     // Scale
     height: 100vh;
-    width: 250px;
-    padding: 20px;
+    width: 100vw;
+    padding: 10px;
     // Location
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 2;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     // Style
     background-color: #023872;
     box-shadow: 0 30px 70px black;
@@ -140,22 +147,46 @@
     transition: 0.2s;
 }
 
-.background {
-    // Scale
-    height: 100vh;
-    width: 100vw;
-    // Location
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    // Style
-    backdrop-filter: blur(5px);
-    // Animations
-    transition: 0.2s;
-}
-
 .navLinksContainer {
+    padding-top: 50px;
     // Style
     list-style: none;
+    // Location
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.burgerField {
+    width: calc(100% - 40px);
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    background-image: url("./../../images/icons/loupe-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center left 5px;
+    padding: 5px 5px 5px 25px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.navLinksContainer li {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.navLinksContainer li:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

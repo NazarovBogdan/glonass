@@ -10,7 +10,7 @@ import React, {
 
 
 
-function NavigationBar() {
+function NavigationBar(props) {
     const [bgColor, setColor] = useState('transparent')
     const [boxShadow, setShadow] = useState('none')
 
@@ -81,6 +81,7 @@ function NavigationBar() {
                     </NavLink>
                 </li>
             </ul>
+            <input type="checkbox" id="switch" onClick={props.onChangeTheme}/><label for="switch">Toggle</label>
         </nav>
     )
 }

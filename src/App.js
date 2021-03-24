@@ -1,5 +1,9 @@
 // React
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
+// Style
+import { GlobalStyles } from './components/themes/GlobalStyles'
+import { lightTheme, darkTheme } from './components/themes/Themes'
+import ThemeProvider from 'styled-components'
 // RRD
 import {
     Route,
@@ -19,7 +23,6 @@ import AboutUsPage from './pages/AboutUsPage/AboutUsPage'
 import EquipmentPage from './pages/EquipmentPage/EquipmentPage'
 import ContactsPage from './pages/ContactsPage/ContactsPage'
 import CategoryPage from './pages/CategoryPage/CategoryPage'
-import ItemPage from './pages/ItemPage/ItemPage'
 import IndustryPage from './pages/IndustryPage/IndustryPage'
 import AdminPage from './pages/AdminPage/AdminPage'
 
@@ -32,7 +35,12 @@ function App() {
     function setName(categoryName, categoryName2) {
         setNewName(categoryName)
         setNewNameCat(categoryName2)
+    }
 
+    const [theme, setTheme] = useState('light')
+
+    const themeToggler = () => {
+        theme === 'light' ? setTheme('dark') : setTheme('light')
     }
 
     return (
@@ -40,39 +48,37 @@ function App() {
             <ScrollToTop>
                 <Switch>
                     <Route path="/admin">
-                        <Route path="/admin">
-                            <AdminPage />
-                        </Route>
+                        <AdminPage />
                     </Route>
                     <Route path="/">
-                        <Header />
-                        <NavigationBar />
-                        <Switch>
-                            <Route path="/equipment">
-                                <EquipmentPage categoryName={setName} />
-                            </Route>
-                            <Route path="/contacts">
-                                <ContactsPage />
-                            </Route>
-                            <Route path="/about">
-                                <AboutUsPage />
-                            </Route>
-                            <Route path="/industry">
-                                <IndustryPage />
-                            </Route>
-                            <Route path="/category">
-                                <CategoryPage category={category} heading={category2} />
-                            </Route>
-                            <Route path="/equipment/category/item">
-                                <ItemPage />
-                            </Route>
-                            <Route path="/main">
-                                <MainPage />
-                            </Route>
-                            <Redirect to="/main" />
-                        </Switch>
-                        <UserForm />
-                        <Footer />
+                        {/* <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}> */}
+                            {/* <GlobalStyles /> */}
+                            <Header />
+                            <NavigationBar onChangeTheme={themeToggler} />
+                            <Switch>
+                                <Route path="/equipment">
+                                    <EquipmentPage categoryName={setName} />
+                                </Route>
+                                <Route path="/contacts">
+                                    <ContactsPage />
+                                </Route>
+                                <Route path="/about">
+                                    <AboutUsPage />
+                                </Route>
+                                <Route path="/industry">
+                                    <IndustryPage />
+                                </Route>
+                                <Route path="/category">
+                                    <CategoryPage category={category} heading={category2} />
+                                </Route>
+                                <Route path="/main">
+                                    <MainPage />
+                                </Route>
+                                <Redirect to="/main" />
+                            </Switch>
+                            <UserForm />
+                            <Footer />
+                        {/* </ThemeProvider> */}
                     </Route>
                 </Switch>
             </ScrollToTop>

@@ -1,12 +1,12 @@
 // React
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 // Style
 import style from './CategoryPage.module.scss'
 // AOS
 import Aos from 'aos'
 import '../../../node_modules/aos/dist/aos.css'
 // RRD
-import { NavLink, useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 // Components
 import Subtitle from './../../components/Subtitle/Subtitle'
 import Section from './../../components/Section/Section'
@@ -14,10 +14,9 @@ import Container from './../../components/Container/Container'
 import Heading from '../../components/Heading/Heading'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import TargetButton from '../../components/TargetButton/TargetButton'
+import { PreviewMobile } from './../../components/PreviewMobile/PreviewMobile'
 // API
 import { setItemsCategory } from './../../components/API/API'
-import item from './item.jpg'
-
 
 
 
@@ -30,7 +29,6 @@ function CategoryItem(props) {
         <div className={style.item} data-aos="fade">
             <div className={style.itemPreview}>
                 <img
-                    src={item}
                 />
             </div>
             <Paragraph
@@ -60,19 +58,37 @@ function CategoryItem(props) {
 function CategoryPage(props) {
     const [categoryItem, setItems] = useState()
 
+    const [isMobile, changeLoupe] = useState(false)
+
+    const setLoupe = () => {
+        if (window.screen.width <= 1024) {
+            changeLoupe(true)
+        }
+        else {
+            changeLoupe(false)
+        }
+    }
+
+    const location = useLocation()
+
     useEffect(() => {
         Aos.init({ duration: 700 })
 
         const DATA = new FormData()
-        DATA.append("category", props.category)
+        DATA.append("category", location.pathname)
         setItemsCategory(DATA).then(response => {
             setItems(response.map(i => <CategoryItem key={i.id} name={i.name} />))
         })
-    })
+
+        setLoupe()
+    }, [])
 
     return (
         <main data-aos="fade">
-            <Section>
+            {isMobile &&
+                <PreviewMobile heading={props.heading}/>
+            }
+            {!isMobile &&
                 <Container>
                     <Subtitle>
                         Оборудование
@@ -80,6 +96,10 @@ function CategoryPage(props) {
                     <Heading>
                         {props.heading}
                     </Heading>
+                </Container>
+            }
+            <Section>
+                <Container>
                     <div className={style.itemsContainer}>
                         {categoryItem}
                     </div>

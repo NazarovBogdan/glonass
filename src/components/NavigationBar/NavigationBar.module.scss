@@ -1,9 +1,54 @@
+input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 80px;
+    height: 50px;
+    background: #ff9900;
+    display: block;
+    border-radius: 100px;
+    position: absolute;
+    right: -15%;
+    top: 0;
+    transition: .2s;
+    @media screen and (max-width: 1120px) {
+        display: none;
+    }
+}
+
+label:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+input:checked + label {
+    background: rgb(46, 46, 46);
+}
+
+input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
 .navigationBar {
     // Scale
+    height: 50px;
     width: 800px;
     margin: 0 auto 20px;
     // Location
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         display: none;
     }
     position: sticky;
@@ -12,7 +57,7 @@
     // Style
     border-radius: 25px;
     // Animation
-    transition: .2s;
+    transition: 0.2s;
 }
 
 .navLinksContainer {

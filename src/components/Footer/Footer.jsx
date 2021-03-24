@@ -45,10 +45,10 @@ function Footer() {
                             </ul>
                         </div>
                         <div className={style.buttons}>
-                            <TargetButton style={{ minWidth: 150 }}>
+                            <TargetButton style={{ minWidth: 150 }} tag="a" href="https://hosting.wialon.com/" target="_blank">
                                 Демо wialon
                             </TargetButton>
-                            <TargetButton style={{ minWidth: 150 }}>
+                            <TargetButton style={{ minWidth: 170 }} tag="a" href="https://online.omnicomm.ru/" target="_blank">
                                 Демо omnicomm
                             </TargetButton>
                         </div>
@@ -60,33 +60,33 @@ function Footer() {
                             </Heading>
                             <ul className={style.linksContainer}>
                                 <li>
-                                    <TargetLink>
-                                        Спецтехника
+                                    <TargetLink to="/industry/special-equipment">
+                                        Мониторинг спецтехники
                                     </TargetLink>
                                 </li>
                                 <li>
-                                    <TargetLink>
-                                        Сельхозтехника
+                                    <TargetLink to="/industry/agricultural-equipment">
+                                        Мониторинг сельхозтехники
                                     </TargetLink>
                                 </li>
                                 <li>
-                                    <TargetLink>
-                                        Топливозаправщики
+                                    <TargetLink to="industry/social-equipment">
+                                        Мониторинг общественного транспорта
                                     </TargetLink>
                                 </li>
                                 <li>
-                                    <TargetLink>
-                                        Легковой коммерческий транспорт
+                                    <TargetLink to="/industry/gasoline-equipment">
+                                        Мониторинг бензовозов и топливозаправщиков
                                     </TargetLink>
                                 </li>
                                 <li>
-                                    <TargetLink>
-                                        Грузовой транспорт
+                                    <TargetLink to="/industry/cargo-equipment">
+                                        Мониторинг грузовых автомобилей
                                     </TargetLink>
                                 </li>
                                 <li>
-                                    <TargetLink>
-                                        Карьерная техника
+                                    <TargetLink to="/industry/passenger-equipment">
+                                        Мониторинг легковых автомобилей
                                     </TargetLink>
                                 </li>
                             </ul>

@@ -1,5 +1,5 @@
 // React
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 // Style
 import style from './EquipmentPage.module.scss'
 // RRD
@@ -14,6 +14,7 @@ import Paragraph from './../../components/Paragraph/Paragraph'
 import Container from './../../components/Container/Container'
 import Section from './../../components/Section/Section'
 import Subtitle from './../../components/Subtitle/Subtitle'
+import { PreviewMobile } from './../../components/PreviewMobile/PreviewMobile'
 // Images
 import videoItem from './images/content/video-item.png'
 import terminalItem from './images/content/terminal-item.png'
@@ -23,8 +24,20 @@ import equipmentItem from './images/content/equipment-item.png'
 
 
 function EquipmentPage(props) {
+    const [isMobile, changeLoupe] = useState(false)
+
+    const setLoupe = () => {
+        if (window.screen.width <= 1024) {
+            changeLoupe(true)
+        }
+        else {
+            changeLoupe(false)
+        }
+    }
+
     useEffect(() => {
         Aos.init({ duration: 700 });
+        setLoupe()
     }, [])
 
     const setName = (newValue, categoryname) => {
@@ -33,53 +46,62 @@ function EquipmentPage(props) {
 
     return (
         <main data-aos="fade">
+            {isMobile &&
+                <PreviewMobile heading="Оборудование" seporator>
+                    Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
+                </PreviewMobile>
+            }
             <Section>
                 <Container>
-                    <Subtitle>
-                        Глонасс-Регионы
-                    </Subtitle>
-                    <Heading>
-                        Оборудование
-                    </Heading>
-                    <Seporator />
-                    <Paragraph>
-                        Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
-                    </Paragraph>
+                    {!isMobile &&
+                        <Fragment>
+                            <Subtitle>
+                                Глонасс-Регионы
+                                    </Subtitle>
+                            <Heading>
+                                Оборудование
+                                    </Heading>
+                            <Seporator />
+                            <Paragraph>
+                                Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
+                                    </Paragraph>
+                        </Fragment>
+                    }
                     <div className={style.itemsContainer}>
                         <NavLink to="/category/video" onClick={() => {
-                            setName("video",  "Видеомониторинг")
+                            setName("video", "Видеомониторинг")
                         }}>
-                            <div className={style.item}>
+                            <div data-aos="fade-up" className={style.item}>
                                 <h3>
                                     Видеомониторинг
                                 </h3>
                             </div>
                         </NavLink>
                         <NavLink to="/category/terminals" onClick={() => {
-                            setName("terminals" ,  "Терминалы")
+                            setName("terminals", "Терминалы")
                             console.log(true);
                         }}>
-                            <div className={style.item}>
+                            <div data-aos="fade-up" className={style.item}>
                                 <h3>
                                     Терминалы
                                 </h3>
                             </div>
                         </NavLink>
                         <NavLink to="/category/sensors" onClick={() => {
-                            setName("sensors",  "Датчики уровня топлива")
+                            setName("sensors", "Датчики уровня топлива")
                         }}>
-                            <div className={style.item}>
+                            <div data-aos="fade-up" className={style.item}>
                                 <h3>
-                                    Датчики уровня топлива
+                                    Датчики уровня<br />топлива
                                 </h3>
                             </div>
                         </NavLink>
                         <NavLink to="/category/other-eqipments" onClick={() => {
-                            setName("other-eqipments",  "Дополнительное оборудование")
+                            setName("other-eqipments", "Дополнительное оборудование")
                         }}>
-                            <div className={style.item}>
+                            <div data-aos="fade-up" className={style.item}>
                                 <h3>
-                                    Дополнительное оборудование
+                                    Дополнительное<br />оборудование
                                 </h3>
                             </div>
                         </NavLink>

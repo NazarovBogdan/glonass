@@ -12,7 +12,6 @@ import Paragraph from './../Paragraph/Paragraph'
 import Container from './../Container/Container'
 import Section from './../Section/Section'
 import Subtitle from './../Subtitle/Subtitle'
-import TargetLink from './../TargetLink/TargetLink'
 
 
 
@@ -53,7 +52,7 @@ function UserForm() {
                                     className={style.textarea}
                                     placeholder="Комментарий"
                                 />
-                                <Subtitle>
+                                <Subtitle className={style.subtitle}>
                                     Нажимая "Отправить", я соглашаюсь с <br />
                                     <a target="_blank" href="" className={style.link}>политикой конфеденциальности</a>
                                     <br /> компании

@@ -29,6 +29,10 @@
     outline: none;
 }
 
+*::selection {
+    background-color: #ff9900;
+}
+
 body {
     font-family: Montserrat, sans-serif;
     /* background-color: rgb(58, 58, 58); */
