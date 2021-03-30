@@ -64,6 +64,9 @@ main {
     border: 1px solid #023872;
     color: #023872;
     margin-bottom: 10px;
+    font-weight: 300;
+    font-size: 34px;
+    line-height: 83%;
     cursor: pointer;
     transition: .2s;
     background-color: transparent;
@@ -336,4 +339,11 @@ main {
     // Location
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.button_char_delete{
+    font-family: Montserrat;
+    font-weight: 300;
+    font-size: 34px;
+    line-height: 83%;
 }

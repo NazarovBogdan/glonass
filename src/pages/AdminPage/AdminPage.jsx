@@ -1,5 +1,5 @@
 // React
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
 // Style
 import style from './AdminPage.module.scss'
 // AOS
@@ -23,8 +23,21 @@ import Paragraph from '../../components/Paragraph/Paragraph'
 import TargetButton from '../../components/TargetButton/TargetButton'
 // API
 import { setItemsCategory } from './../../components/API/API'
-import { addItems } from './../../components/API/API'
 
+
+
+const CharRecordInput = (props) => {
+    return(
+        <div className={style.inputContainer}>
+            <Field name={`char${props.id}`} type="text" placeholder="Характеристика" />
+            <Field name={`props${props.id}`} type="text" placeholder="Свойство" />
+            <button className={style.delete} onClick={() => {props.deleteField(props.id)}} type="button">
+                <p className={style.button_char_delete}>+</p>
+            </button>
+        </div>
+    )
+   
+}
 
 function SureModal(props) {
     return (
@@ -54,18 +67,25 @@ function SureModal(props) {
     )
 }
 
-
 function ItemModal(props) {
-    const [fieldsValue, addField] = useState(1)
 
-    const addNewField = () => {
-        addField(fieldsValue + 1)
+    const [fieldsValue, fieldValuePlus] = useState([1])
+
+    useEffect(()=>{
         console.log(fieldsValue);
+    })
+
+
+    const deleteField = (id) => {
+        const fieldsValueNew = fieldsValue.filter(item => item !== id)
+        fieldValuePlus(fieldsValueNew) 
+        console.log(fieldsValueNew);  
     }
 
-    const deleteField = () => {
-        addField(fieldsValue - 1)
-        console.log(fieldsValue);
+    const addNewField = () => {
+        const fieldsPlus = + fieldsValue.length + Math.random() * 10
+        fieldsValue.push(fieldsPlus)
+        fieldValuePlus(fieldsValue)   
     }
 
     return (
@@ -78,6 +98,7 @@ function ItemModal(props) {
                     char: ''
                 }}
                 onSubmit={(values) => {
+                    console.log(values);
                     const DATA = new FormData();
                     DATA.append("name", values.name)
                     DATA.append("character", values.char)
@@ -85,13 +106,13 @@ function ItemModal(props) {
                     DATA.append("feature", values.features)
                     DATA.append("category", "video")
                     DATA.append("id", Math.floor(Math.random() * 1000000))
-                    addItems(DATA);
+                    // addItems(DATA);
                 }}
             >
                 {({ isSubmitting }) => (
                     <Form className={style.modalContainer}>
                         <div className={style.imageContainer}>
-                            <button className={style.addPhoto}>
+                            <button type="button" className={style.addPhoto}>
                                 <div>
                                     <svg width="60" height="60" viewBox="0 0 38 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M32.932 5.57797H27.52V5.02197C27.52 2.53797 25.504 0.521973 23.02 0.521973H14.413C11.928 0.521973 9.913 2.53797 9.913 5.02197V5.57797H4.5C2.015 5.57797 0 7.59297 0 10.078V26.412C0 28.896 2.015 30.912 4.5 30.912H32.934C35.419 30.912 37.434 28.896 37.434 26.412V10.078C37.432 7.59197 35.417 5.57797 32.932 5.57797ZM18.715 26.244C14.027 26.244 10.215 22.432 10.215 17.744C10.215 13.057 14.027 9.24397 18.715 9.24397C23.403 9.24397 27.215 13.056 27.215 17.744C27.215 22.432 23.402 26.244 18.715 26.244ZM23.215 17.744C23.215 20.223 21.195 22.244 18.715 22.244C16.235 22.244 14.215 20.223 14.215 17.744C14.215 15.264 16.235 13.244 18.715 13.244C21.195 13.244 23.215 15.264 23.215 17.744Z" fill="black" />
@@ -102,35 +123,22 @@ function ItemModal(props) {
                         <div>
                             <Field name="name" placeholder="Название" />
                             <h3>
-                                Особенности
+                                Описание
                             </h3>
                             <div>
-                                {fieldsValue.map(i => {
-                                    return <Field key={i} name="char" type="text" placeholder="Характеристика" />
-                                })}
-                                <button className={style.delete} onClick={deleteField} type="button">
-                                    <p>+</p>
-                                </button>
+                                <Field name="description" type="text" placeholder="Описание" />
                             </div>
-                            <button className={style.add} onClick={addNewField} type="button">
-                                +
-                            </button>
                             <h3>
                                 Характеристики
                             </h3>
-                            <div className={style.inputContainer}>
-                                <Field name="char" type="text" placeholder="Характеристика" />
-                                <Field name="props" type="text" placeholder="Свойство" />
-                                <button className={style.delete} onClick={deleteField} type="button">
-                                    <p>+</p>
-                                </button>
+                            <div>
+                                {fieldsValue.map(i => <CharRecordInput key={i} id={i} deleteField={deleteField}/>)}
                             </div>
-                            <button className={style.add}>
+                            <button type="button" onClick={addNewField} className={style.add}>
                                 +
                             </button>
                             <div className={style.buttonContainer}>
                                 <TargetButton
-                                    type="submit"
                                     disabled={isSubmitting}
                                     style={{
                                         backgroundColor: '#49C155',
@@ -141,13 +149,13 @@ function ItemModal(props) {
                                         width: 'calc(50% - 5px)'
                                     }}
                                 >
-                                    Применить
+                                    Добавить
                                 </TargetButton>
-                                <TargetButton style={{ backgroundColor: '#DA4141', color: 'white', border: 'none', marginBottom: 10, width: 'calc(50% - 5px)' }}>
+                                {/* <TargetButton style={{ backgroundColor: '#DA4141', color: 'white', border: 'none', marginBottom: 10, width: 'calc(50% - 5px)' }}>
                                     Удалить
-                                </TargetButton>
+                                </TargetButton> */}
                             </div>
-                            <TargetButton style={{ width: '100%' }} onClick={props.onClose}>
+                            <TargetButton type="button" style={{ width: '100%' }} onClick={props.onClose}>
                                 Отменить
                             </TargetButton>
                         </div>
