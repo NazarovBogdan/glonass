@@ -84,8 +84,7 @@ function ItemModal(props) {
 
     const addNewField = () => {
         const fieldsPlus = + fieldsValue.length + Math.random() * 10
-        fieldsValue.push(fieldsPlus)
-        fieldValuePlus(fieldsValue)   
+        fieldValuePlus(currentFieldsValue => [...currentFieldsValue, fieldsPlus])   
     }
 
     return (
