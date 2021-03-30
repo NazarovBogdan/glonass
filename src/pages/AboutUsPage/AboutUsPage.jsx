@@ -63,7 +63,10 @@ function AboutUsPage() {
                                     Глонасс-Регионы
                             </p>
                                 <Heading
-                                    style={{ textAlign: 'left' }}
+                                    style={{
+                                        textAlign: 'left',
+                                        marginBottom: 20
+                                    }}
                                 >
                                     О компании
                         </Heading>
@@ -87,7 +90,7 @@ function AboutUsPage() {
 
             <Section>
                 <Container>
-                    <Heading>
+                    <Heading style={{ marginBottom: 100 }}>
                         Решаемые задачи
                     </Heading>
                     <div className={style.taskContainer}>

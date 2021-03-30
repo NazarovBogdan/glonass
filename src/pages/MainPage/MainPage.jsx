@@ -113,7 +113,8 @@ function MainPage() {
                                     textAlign: 'left',
                                     color: 'white',
                                     textShadow: '0 0 5px black',
-                                    marginBottom: 30
+                                    zIndex: 1,
+                                    fontSize: 12
                                 }}
                             >
                                 Система мониторинга транспорта
@@ -123,7 +124,8 @@ function MainPage() {
                                     textAlign: 'left',
                                     color: 'white',
                                     textShadow: '0 0 5px black',
-                                    marginBottom: 30
+                                    marginBottom: 10,
+                                    fontSize: 64
                                 }}
                             >
                                 GLONASS REGIONS
@@ -133,7 +135,7 @@ function MainPage() {
                                     textAlign: 'left',
                                     color: 'white',
                                     textShadow: '0 0 5px black',
-                                    marginBottom: 30
+                                    marginBottom: 50
                                 }}
                             >
                                 Мы занимаемся разработкой и внедрением комплексных решений по мониторингу транспорта для всех типов подвижных и стационарных объектов.
@@ -158,7 +160,7 @@ function MainPage() {
                 <Container>
                     {!isMobile &&
                         <Fragment>
-                            <Heading>
+                            <Heading style={{ marginBottom: 30 }}>
                                 Система мониторинга транспорта<br />
                                 GLONASS/GPS
                             </Heading>
@@ -292,7 +294,7 @@ function MainPage() {
                                 alt=""
                             />
                             <Paragraph style={{ marginBottom: 0 }}>
-                                Все данные хронятся  на нашем сервере, где их может проверить пользователь
+                                Все данные хранятся  на нашем сервере, где их может проверить пользователь
                             </Paragraph>
                         </div>
                     </div>
@@ -333,17 +335,17 @@ function MainPage() {
                                         Следит за работой автопарка и водителей
                                     </p>
                                     <p className={style.itemsParagraph}>
-                                        Посменный отчёт, включающий время движения Tc и расход топлива
+                                        Система позволяет следить в режиме реального времяни за водителями и техникой
                                     </p>
                                 </div>
                                 <div>
                                     <p
                                         className={style.itemsHeading}
                                     >
-                                        сокращение времени доставки
+                                        Сокращает время доставки
                                     </p>
                                     <p className={style.itemsParagraph}>
-                                        Посменный отчёт, включающий время движения TC и расход топлива
+                                        Система позволяет следить за тех. характеристиками трансорта в режиме реального времяни
                                     </p>
                                 </div>
                             </div>

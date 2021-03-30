@@ -70,7 +70,7 @@ function Header() {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        z-index: 2;
+        z-index: 11;
         position: absolute;
         right: 10px;
     `

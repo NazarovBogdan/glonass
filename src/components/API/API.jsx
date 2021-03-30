@@ -17,6 +17,16 @@ export const setItemsCategory = (params) => {
     })
 }
 
+export const setItemsAPI = (params) => {
+    return instanse({
+        method: 'post',
+        url: 'test.php',
+        data: params
+    }).then(response => {
+        return response.data
+    })
+}
+
 export const addItems = (params) => {
     return instanse({
         method: 'post',

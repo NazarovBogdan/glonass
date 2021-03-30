@@ -19,7 +19,11 @@ function UserForm() {
     return (
         <Section>
             <Container style={{ maxWidth: 900 }}>
-                <Heading>
+                <Heading
+                    style={{
+                        marginBottom: 50
+                    }}
+                >
                     Начните работать эффективно
                 </Heading>
                 <div className={style.paragraphContainer}>
@@ -52,11 +56,11 @@ function UserForm() {
                                     className={style.textarea}
                                     placeholder="Комментарий"
                                 />
-                                <Subtitle className={style.subtitle}>
+                                <p className={style.subtitle}>
                                     Нажимая "Отправить", я соглашаюсь с <br />
                                     <a target="_blank" href="" className={style.link}>политикой конфеденциальности</a>
                                     <br /> компании
-                                </Subtitle>
+                                </p>
                                 <button className={style.button}>
                                     Отправить
                                 </button>

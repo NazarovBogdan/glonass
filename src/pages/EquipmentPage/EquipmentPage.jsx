@@ -57,10 +57,10 @@ function EquipmentPage(props) {
                         <Fragment>
                             <Subtitle>
                                 Глонасс-Регионы
-                                    </Subtitle>
-                            <Heading>
+                            </Subtitle>
+                            <Heading style={{ marginBottom: 30 }}>
                                 Оборудование
-                                    </Heading>
+                            </Heading>
                             <Seporator />
                             <Paragraph>
                                 Компания «Глонасс-Регионы» – партнер крупнейших российских разработчиков и производителей систем мониторинга транспорта в Ростовской области.
@@ -79,7 +79,6 @@ function EquipmentPage(props) {
                         </NavLink>
                         <NavLink to="/category/terminals" onClick={() => {
                             setName("terminals", "Терминалы")
-                            console.log(true);
                         }}>
                             <div data-aos="fade-up" className={style.item}>
                                 <h3>

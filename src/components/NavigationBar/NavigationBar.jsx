@@ -80,8 +80,10 @@ function NavigationBar(props) {
                         Контакты
                     </NavLink>
                 </li>
+                <li>
+                    <input type="checkbox" id="switch" onClick={props.onChangeTheme} /><label for="switch">Toggle</label>
+                </li>
             </ul>
-            <input type="checkbox" id="switch" onClick={props.onChangeTheme}/><label for="switch">Toggle</label>
         </nav>
     )
 }

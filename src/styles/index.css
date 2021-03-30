@@ -11,6 +11,12 @@
 }
 
 @font-face {
+    font-family: Montserrat;
+    src: url("./../fonts/Montserrat/Montserrat-Medium.ttf");
+    font-weight: 300;
+}
+
+@font-face {
     font-family: SourceSansPro;
     src: url("./../fonts/SourceSansPro/SourceSansPro-Light.ttf");
     font-weight: 100;
@@ -52,6 +58,8 @@ h2 {
 }
 
 p {
+    font-family: Montserrat;
+    font-weight: 300;
     font-size: 18px;
     line-height: 150%;
 }

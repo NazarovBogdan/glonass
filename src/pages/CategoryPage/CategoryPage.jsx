@@ -6,7 +6,7 @@ import style from './CategoryPage.module.scss'
 import Aos from 'aos'
 import '../../../node_modules/aos/dist/aos.css'
 // RRD
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams, useHistory } from 'react-router-dom'
 // Components
 import Subtitle from './../../components/Subtitle/Subtitle'
 import Section from './../../components/Section/Section'
@@ -25,11 +25,19 @@ function CategoryItem(props) {
         Aos.init({ duration: 700 })
     })
 
+    console.log(props);
+
+    const test = (categoryItem, categoryItemName) => {
+        props.setCategoryNameItem(categoryItem, categoryItemName)
+    }
+
+    const itemImage = new Image();
+    itemImage.src = props.img;
+
     return (
         <div className={style.item} data-aos="fade">
             <div className={style.itemPreview}>
-                <img
-                />
+                <img src={itemImage.src} />
             </div>
             <Paragraph
                 style={{
@@ -42,14 +50,15 @@ function CategoryItem(props) {
             <div className={style.priceContainer}>
                 <TargetButton
                     tag="nav"
-                    to="/item"
+                    onClick={() => { test(props.categoryItem, props.name) }}
+                    to={`/category/${props.categoryItem}/${props.name}`}
                     style={{
                         height: 40,
                         minWidth: 150
                     }}
                 >
                     Подробнее
-                    </TargetButton>
+                </TargetButton>
             </div>
         </div>
     )
@@ -69,15 +78,13 @@ function CategoryPage(props) {
         }
     }
 
-    const location = useLocation()
-
     useEffect(() => {
         Aos.init({ duration: 700 })
 
         const DATA = new FormData()
-        DATA.append("category", location.pathname)
+        DATA.append("category", props.category)
         setItemsCategory(DATA).then(response => {
-            setItems(response.map(i => <CategoryItem key={i.id} name={i.name} />))
+            setItems(response.map(i => <CategoryItem setCategoryNameItem={props.setCategoryNameItem} categoryItem={props.category} key={i.id} img={i.img} name={i.name} />))
         })
 
         setLoupe()
@@ -86,7 +93,7 @@ function CategoryPage(props) {
     return (
         <main data-aos="fade">
             {isMobile &&
-                <PreviewMobile heading={props.heading}/>
+                <PreviewMobile heading={props.heading} />
             }
             {!isMobile &&
                 <Container>

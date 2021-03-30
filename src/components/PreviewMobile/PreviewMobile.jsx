@@ -48,6 +48,7 @@ export const PreviewMobile = (props) => {
         font-size: 28px;
         color: white;
         margin-bottom: 10px;
+        text-align: center;
     `
 
     const Paragraph = styled.p`
@@ -67,7 +68,7 @@ export const PreviewMobile = (props) => {
             <PreviewBlock data-aos="zoom-in" />
             <Subtitle>
                 Глонасс-Регионы
-            </Subtitle>
+                </Subtitle>
             <Heading>
                 {props.heading}
             </Heading>

@@ -1,98 +1,149 @@
-.itemContainer {
-    // Location
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    @media screen and (max-width: 768px) {
-        grid-template-columns: 1fr;
-    }
-    grid-gap: 40px;
-}
-
-.gallery {
-    // Location
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-}
-
-.image:nth-child(1) {
-    // Scale
-    width: 440px;
-    height: 440px;
-    // Location
-    grid-row: 1/4;
-}
-
-.image {
-    // Scale
-    width: 140px;
-    height: 140px;
-    // Location
-    background-color: whitesmoke;
-    border-radius: 20px;
-    // Style
-    cursor: pointer;
-}
-
-.image div {
-    // Scale
+.gridContainer {
+    margin-top: 40px;
     width: 100%;
-    height: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2em;
+    grid-template-areas: "a b" "c b";
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: calc(100vw - 20px);
+        grid-template-areas: none;
+    }
+}
+
+.headingBlock {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(196, 196, 196, 0.26);
+    border-radius: 20px;
+    color: #023872;
+    font-size: 14px;
+    margin-bottom: 20px;
+    @media screen and (max-width: 1024px) {
+        font-size: 10px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.paragraph {
+    font-size: 16px;
+}
+
+.previewImage {
+    grid-area: a;
+    @media screen and (max-width: 1024px) {
+        grid-area: auto;
+    }
+    width: 100%;
     padding-top: 100%;
-    // Location
     position: relative;
-    // Style
+    @media screen and (max-width: 1024px) {
+        height: calc(100vw - 20px);
+    }
     background-color: whitesmoke;
     border-radius: 20px;
     overflow: hidden;
+    -webkit-filter: drop-shadow(0px 23px 37px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0px 23px 37px rgba(0, 0, 0, 0.15));
 }
 
-.image div img {
-    // Scale
-    width: 100%;
-    height: 100%;
-    // Location
-    object-fit: cover;
+.previewImage img {
     position: absolute;
     top: 0;
     left: 0;
+    -o-object-fit: contain;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
-.image:not(:nth-child(1)) {
-    // Scale
-    @media screen and (max-width: 768px) {
-        display: none;
+.descriptionBlock {
+    grid-area: b;
+    @media screen and (max-width: 1024px) {
+        grid-area: auto;
+    }
+    height: 100%;
+}
+
+.descriptionBlockInner h2 {
+    margin-bottom: 20px;
+    @media screen and (max-width: 1024px) {
+        font-size: 24px;
     }
 }
 
-.features {
-    // Scale
+.descriptionBlockInner p {
+    margin-bottom: 20px;
+    @media screen and (max-width: 1024px) {
+        font-size: 14px;
+    }
+}
+
+.descriptionBlockInner {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+    height: auto;
+}
+
+.charBlock {
+    grid-area: c;
+    @media screen and (max-width: 1024px) {
+        grid-area: auto;
+    }
+}
+
+.charBlock table {
     width: 100%;
-    // Style
-    font-size: 14px;
+    border-collapse: collapse;
 }
 
-.tableHeading {
-    // Scale
-    width: max-content;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    // Style
+.charBlock table tr td {
+    padding: 10px;
+}
+
+.charBlock table tr td:last-child {
+    text-align: right;
+}
+
+.charBlock table tr td {
+    width: 50%;
+}
+
+.charBlock p {
+    @media screen and (max-width: 1024px) {
+        font-size: 14px;
+    }
+}
+
+.charBlock table tr:nth-child(2n-1) {
     background-color: whitesmoke;
-    color: #006bcd;
-    border-radius: 17px;
 }
 
-.features td {
-    // Scale
-    height: 34px;
+.charBlock table tr:hover {
+    background-color: rgb(224, 224, 224);
 }
 
-.description {
-    margin-left: 1em;
-    margin-bottom: 30px;
+.showButton {
+    border: 1px solid #023872;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: white;
+    margin-top: 30px;
+    color: #023872;
+    transition: .2s;
 }
 
-.description li {
-    min-height: 34px;
+.showButton:hover {
+    box-shadow: 0px 23px 37px rgba(0, 0, 0, 0.15);
+
+}
+
+.tableContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

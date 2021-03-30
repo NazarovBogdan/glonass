@@ -80,7 +80,6 @@ function IndustryItemPage(props) {
                             </Paragraph>
                             <ul className={style.ul}>
                                 {props.case.preview.list.map(i => {
-                                    console.log(i);
                                     return <li>{i}</li>
                                 })}
                             </ul>
@@ -90,7 +89,7 @@ function IndustryItemPage(props) {
             </Section>
             <Section className={style.isDesk}>
                 <Container>
-                    <Heading>
+                    <Heading style={{ marginBottom: 30 }}>
                         Готовые решения
                     </Heading>
                     <Paragraph>
@@ -119,7 +118,7 @@ function IndustryItemPage(props) {
                                 </h3>
                                 <ul>
                                     {props.case.swiper[i].list.map(j => {
-                                        return <li>{j}</li>
+                                        return <li><p>{j}</p></li>
                                     })}
                                 </ul>
                                 <div className={style.navContainer}>

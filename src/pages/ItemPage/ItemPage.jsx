@@ -1,5 +1,5 @@
 // React
-import { useEffect } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 // Style
 import style from './ItemPage.module.scss'
 // AOS
@@ -8,165 +8,142 @@ import '../../../node_modules/aos/dist/aos.css'
 // Components
 import Section from '../../components/Section/Section'
 import Container from '../../components/Container/Container'
-import Heading from '../../components/Heading/Heading'
-import Paragraph from '../../components/Paragraph/Paragraph'
 import TargetButton from '../../components/TargetButton/TargetButton'
+import ModalWindow from './../../components/ModalWindow/ModalWindow'
 
-import item from './../CategoryPage/item.jpg'
+import { setItemsAPI } from "../../components/API/API"
 
 
 
 function ItemPage(props) {
+    const [isModalOpened, showModal] = useState(false)
+
+    const openModal = () => {
+        isModalOpened === true ? showModal(false) : showModal(true)
+    }
+    const [item, setItem] = useState([
+        {
+            name: '',
+        },
+        {
+            photo: ''
+        },
+        {
+            description: '',
+        },
+        {
+            characters: '',
+            props: ''
+        }
+    ])
+
     useEffect(() => {
         Aos.init({ duration: 700 });
+
+        const DATA = new FormData()
+
+        DATA.append("name", props.itemPar.name)
+
+        setItemsAPI(DATA).then(response => {
+            setItem(response)
+        })
     }, [])
+
+    const desctopImage = new Image();
+    desctopImage.src = item[2].photo;
+
+    const [isTableFull, setTableFull] = useState(false)
+
+    const showTable = () => {
+        setTableFull(!isTableFull)
+    }
 
     return (
         <main data-aos="fade">
-            <Section>
+            <ModalWindow onClose={openModal} isOpen={isModalOpened} />
+            <Section style={{ marginTop: 20 }}>
                 <Container>
-                    <div className={style.itemContainer}>
-                        <div className={style.gallery}>
-                            <div className={style.image}>
-                                <div>
-                                    <img src={item} alt="" />
-                                </div>
-                            </div>
-                            <div className={style.image}>
-                                <div>
-                                    <img src={item} alt="" />
-                                </div>
-                            </div>
-                            <div className={style.image}>
-                                <div>
-                                    <img src={item} alt="" />
-                                </div>
-                            </div>
-                            <div className={style.image}>
-                                <div>
-                                    <img src={item} alt="" />
+                    <div className={style.gridContainer}>
+                        <div className={style.previewImage}>
+                            <img src={desctopImage.src} />
+                        </div>
+                        <div className={style.descriptionBlock}>
+                            <div>
+                                <div className={style.descriptionBlockInner}>
+                                    <h2>
+                                        {item[0].name}
+                                    </h2>
+                                    <div className={style.headingBlock}>
+                                        <h3>
+                                            Описание
+                                        </h3>
+                                    </div>
+                                    <p className={style.paragraph}>
+                                        {item[1].description}
+                                    </p>
+                                    <TargetButton onClick={openModal}>
+                                        Заказать
+                                    </TargetButton>
                                 </div>
                             </div>
                         </div>
-                        <div className={style.description}>
-                            <Heading
-                                style={{
-                                    textAlign: 'left',
-                                    marginBottom: 20
-                                }}
-                            >
-                                {props.itemName}
-                                Название товара
-                            </Heading>
-                            <div className={style.tableHeading} style={{ marginBottom: 30 }}>
-                                Особенности
+                        <div className={style.charBlock}>
+                            <div className={style.headingBlock}>
+                                <h3>
+                                    Характеристики
+                                </h3>
                             </div>
-                            <ul className={style.description}>
-                                <li>
-                                    Питание через PoE ( Power over Ethernet)
-                                </li>
-                                <li>
-                                    Двойное стекло, антибликовое покрытие
-                                </li>
-                                <li>
-                                    24 светодиода LED
-                                </li>
-                                <li>
-                                    3.6 мм инфракрасные линзы
-                                </li>
-                                <li>
-                                    Инфракрасная лампа загорается автоматические, если окружающие условия ниже чем 5LU
-                                </li>
-                            </ul>
-                            <TargetButton>
-                                Заказать
-                            </TargetButton>
-                        </div>
-                        <div className={style.features}>
-                            <div className={style.tableHeading}>
-                                Характеристики
+                            <div className={style.tableContainer}>
+                                <table>
+                                    <tbody>
+                                        {/* {item.forEach((element, i) => {
+                                        if (i >= 3) {
+                                            return
+                                        }
+                                        return (
+                                            <tr key={i}>
+                                                <td><p>{element.characters}</p></td>
+                                                <td><p>{element.props}</p></td>
+                                            </tr>
+                                        )
+                                    })} */}
+                                        {!isTableFull &&
+                                            item.map((i) => {
+                                                if (i.characters === undefined || i.characters === undefined) {
+                                                    return
+                                                }
+                                                if (item.indexOf(i) >= 6) {
+                                                    return
+                                                }
+                                                return (
+                                                    <tr key={i}>
+                                                        <td><p>{i.characters}</p></td>
+                                                        <td><p>{i.props}</p></td>
+                                                    </tr>
+                                                )
+                                            })
+                                        }
+                                        {isTableFull &&
+                                            item.map((i) => {
+                                                if (i.characters === undefined || i.characters === undefined) {
+                                                    return
+                                                }
+                                                return (
+                                                    <tr key={i}>
+                                                        <td><p>{i.characters}</p></td>
+                                                        <td><p>{i.props}</p></td>
+                                                    </tr>
+                                                )
+                                            })}
+                                    </tbody>
+                                </table>
+                                <button className={style.showButton} onClick={showTable}>{isTableFull ? 'Скрыть' : 'Ещё'}</button>
                             </div>
-                            <table className={style.features}>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            Материал корпуса
-                                        </td>
-                                        <td>
-                                            Метал
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Датчик изображения
-                                        </td>
-                                        <td>
-                                            1/3 SONY CCD
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Система
-                                        </td>
-                                        <td>
-                                            PAL/NTSC
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Вес, г
-                                        </td>
-                                        <td>
-                                            340
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Минимальная освещённость
-                                        </td>
-                                        <td>
-                                            0Lux/F1.2
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Линзы, мм
-                                        </td>
-                                        <td>
-                                            3.6
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Компенсация задней подстветки
-                                        </td>
-                                        <td>
-                                            Автоматическая
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Электронная затворка
-                                        </td>
-                                        <td>
-                                            1/50(1/60)-1/100, 000 сек
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Баланс белого
-                                        </td>
-                                        <td>
-                                            Автоматический
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </Container>
             </Section>
-        </main>
+        </main >
     )
 }
 

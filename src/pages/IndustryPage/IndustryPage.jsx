@@ -131,7 +131,7 @@ function IndustryPage() {
                                     <Subtitle>
                                         Глонасс-Регионы
                                     </Subtitle>
-                                    <Heading>
+                                    <Heading style={{ marginBottom: 30 }}>
                                         Отраслевые решения
                                     </Heading>
                                     <Seporator />

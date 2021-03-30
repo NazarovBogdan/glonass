@@ -1,9 +1,5 @@
 // React
 import React, { useState, Fragment } from 'react'
-// Style
-import { GlobalStyles } from './components/themes/GlobalStyles'
-import { lightTheme, darkTheme } from './components/themes/Themes'
-import ThemeProvider from 'styled-components'
 // RRD
 import {
     Route,
@@ -25,6 +21,7 @@ import ContactsPage from './pages/ContactsPage/ContactsPage'
 import CategoryPage from './pages/CategoryPage/CategoryPage'
 import IndustryPage from './pages/IndustryPage/IndustryPage'
 import AdminPage from './pages/AdminPage/AdminPage'
+import ItemPage from './pages/ItemPage/ItemPage'
 
 
 
@@ -37,11 +34,31 @@ function App() {
         setNewNameCat(categoryName2)
     }
 
-    const [theme, setTheme] = useState('light')
+    const [newCategoryItem, setNewCategoryItem] = useState()
+    const [newCategoryItemName, setNewCategoryItemName] = useState()
+    const [newCategoryItemDescription, setNewCategoryItemDescription] = useState()
+    const [newCategoryItemCharacteristics, setNewCategoryItemCharacteristics] = useState()
 
-    const themeToggler = () => {
-        theme === 'light' ? setTheme('dark') : setTheme('light')
+    function setCategoryItemPar(
+        categoryItem,
+        categoryItemName,
+        categoryItemDescription,
+        categoryItemCharacteristics // [][]
+    ) {
+        setNewCategoryItem(categoryItem)
+        setNewCategoryItemName(categoryItemName)
+        setNewCategoryItemDescription(categoryItemDescription)
+        setNewCategoryItemCharacteristics(categoryItemCharacteristics)
     }
+
+    const itemPar = {
+        category: newCategoryItem,
+        name: newCategoryItemName,
+        description: newCategoryItemDescription,
+        characteristics: newCategoryItemCharacteristics
+    }
+
+    console.log('itempar\n', itemPar);
 
     return (
         <BrowserRouter>
@@ -52,32 +69,35 @@ function App() {
                     </Route>
                     <Route path="/">
                         {/* <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}> */}
-                            {/* <GlobalStyles /> */}
-                            <Header />
-                            <NavigationBar onChangeTheme={themeToggler} />
-                            <Switch>
-                                <Route path="/equipment">
-                                    <EquipmentPage categoryName={setName} />
-                                </Route>
-                                <Route path="/contacts">
-                                    <ContactsPage />
-                                </Route>
-                                <Route path="/about">
-                                    <AboutUsPage />
-                                </Route>
-                                <Route path="/industry">
-                                    <IndustryPage />
-                                </Route>
-                                <Route path="/category">
-                                    <CategoryPage category={category} heading={category2} />
-                                </Route>
-                                <Route path="/main">
-                                    <MainPage />
-                                </Route>
-                                <Redirect to="/main" />
-                            </Switch>
-                            <UserForm />
-                            <Footer />
+                        {/* <GlobalStyles /> */}
+                        <Header />
+                        <NavigationBar />
+                        <Switch>
+                            <Route exact path={`/category/${newCategoryItem}/${newCategoryItemName}`} >
+                                <ItemPage itemPar={itemPar} />
+                            </Route>
+                            <Route path="/equipment">
+                                <EquipmentPage categoryName={setName} />
+                            </Route>
+                            <Route path="/contacts">
+                                <ContactsPage />
+                            </Route>
+                            <Route path="/about">
+                                <AboutUsPage />
+                            </Route>
+                            <Route path="/industry">
+                                <IndustryPage />
+                            </Route>
+                            <Route path="/category">
+                                <CategoryPage setCategoryNameItem={setCategoryItemPar} category={category} heading={category2} />
+                            </Route>
+                            <Route path="/main">
+                                <MainPage />
+                            </Route>
+                            <Redirect to="/main" />
+                        </Switch>
+                        <UserForm />
+                        <Footer />
                         {/* </ThemeProvider> */}
                     </Route>
                 </Switch>
