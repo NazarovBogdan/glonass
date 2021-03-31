@@ -138,6 +138,7 @@ main {
     cursor: pointer;
     // Animation
     transition: 0.2s;
+    position: relative;
 }
 
 .addPhoto:hover {
@@ -346,4 +347,21 @@ main {
     font-weight: 300;
     font-size: 34px;
     line-height: 83%;
+}
+
+.inputPhoto{
+    display: none;
+}
+
+.labelPhoto{
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }

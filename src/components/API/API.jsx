@@ -17,10 +17,30 @@ export const setItemsCategory = (params) => {
     })
 }
 
+export const deleteItemsCategory = (params) => {
+    return instanse({
+        method: 'post',
+        url: 'deleteItem.php',
+        data: params
+    }).then(response => {
+        return response.data
+    })
+}
+
 export const setItemsAPI = (params) => {
     return instanse({
         method: 'post',
         url: 'test.php',
+        data: params
+    }).then(response => {
+        return response.data
+    })
+}
+
+export const setItemChangeModal = (params) => {
+    return instanse({
+        method: 'post',
+        url: 'admin_change_modal.php',
         data: params
     }).then(response => {
         return response.data

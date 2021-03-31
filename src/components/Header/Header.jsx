@@ -15,24 +15,12 @@ import '../../../node_modules/aos/dist/aos.css'
 import TargetButton from './../TargetButton/TargetButton'
 import TargetLink from './../TargetLink/TargetLink'
 import Container from './../Container/Container'
-import Heading from '../Heading/Heading'
 // Icons
 import logo from './../../images/logo/logotype.svg'
 
 
 
 function Header() {
-
-    const [color, changeColor] = useState('white')
-
-    const setColor = () => {
-        if (window.scrollY > 100) {
-            changeColor('#023872')
-        }
-        else {
-            changeColor('white')
-        }
-    }
 
     useEffect(() => {
         Aos.init({ duration: 700 });

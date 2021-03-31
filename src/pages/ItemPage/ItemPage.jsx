@@ -16,6 +16,7 @@ import { setItemsAPI } from "../../components/API/API"
 
 
 function ItemPage(props) {
+    
     const [isModalOpened, showModal] = useState(false)
 
     const openModal = () => {

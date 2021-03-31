@@ -22,8 +22,147 @@ import Heading from '../../components/Heading/Heading'
 import Paragraph from '../../components/Paragraph/Paragraph'
 import TargetButton from '../../components/TargetButton/TargetButton'
 // API
-import { setItemsCategory } from './../../components/API/API'
+import { addItems, deleteItemsCategory, setItemChangeModal, setItemsCategory } from './../../components/API/API'
 
+
+const CharChangeRecordInput = (props) => {
+
+    return(
+        <div className={style.inputContainer}>
+            <Field name={`char${props.id}`} value={props.char} type="text" placeholder="Характеристика" />
+            <Field name={`props${props.id}`} value={props.prop} type="text" placeholder="Свойство" />
+            <button className={style.delete} onClick={() => {props.deleteField(props.id)}} type="button">
+                <p className={style.button_char_delete}>+</p>
+            </button>
+        </div>
+    )
+   
+}
+
+function ChangeItemModal(props) {
+
+    let chara = []
+
+    for (let i = 3; i < props.Item.length; i++) {
+        chara.push(props.Item[i])
+    }
+
+    const [fieldsValue, fieldValuePlus] = useState([1])
+
+    const deleteField = (id) => {
+        const fieldsValueNew = fieldsValue.filter(item => item !== id)
+        fieldValuePlus(fieldsValueNew)  
+    }
+
+    const addNewField = () => {
+        const fieldsPlus = + fieldsValue.length + Math.floor(Math.random() * 1000)
+        fieldValuePlus([...fieldsValue, fieldsPlus])   
+    }
+
+    return (
+        <Modal className={style.modal} {...props}>
+            <Formik
+                initialValues={{
+                    name: "" ,
+                    description: '',
+                    props1: '',
+                    char1: ''
+                }}
+                onSubmit={(values) => {
+                    const val = Object.entries(values);
+
+                    const name = val[0][1]
+
+                    const description = val[1][1]
+
+                    const photoEl = val.length - 1
+                    const photo = val[photoEl][1]
+
+                    let arrChar = []
+                    let arrProps = []
+
+
+                    val.filter(vaiI => {
+                        if (vaiI[0][0] === 'c'){
+                            arrChar.push(vaiI[1] + "&^")
+                        }
+                    })
+
+                    val.filter(vaiI => {
+                        if (vaiI[0][0] === 'p'){
+                            arrProps.push(vaiI[1] + "&^")
+                        }
+                    })
+
+                    const DATA = new FormData();
+                    DATA.append('char', arrChar)
+                    DATA.append('prop', arrProps)
+                    DATA.append('name', name);
+                    DATA.append('description', description)
+                    DATA.append('file', photo)
+                    DATA.append("category", props.categoryName)
+                    DATA.append("id", Math.floor(Math.random() * 1000000))
+                    // addItems(DATA).then(response => {
+                    //     alert("Товар Изменен")
+                    // })
+                }}
+            >
+                {({ isSubmitting, values, handleChange, setFieldValue }) => (
+                    <Form className={style.modalContainer}>
+                        <div className={style.imageContainer}>
+                            <button type="button" className={style.addPhoto}>
+                                <label htmlFor="file" className={style.labelPhoto}>
+                                    <svg width="60" height="60" viewBox="0 0 38 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M32.932 5.57797H27.52V5.02197C27.52 2.53797 25.504 0.521973 23.02 0.521973H14.413C11.928 0.521973 9.913 2.53797 9.913 5.02197V5.57797H4.5C2.015 5.57797 0 7.59297 0 10.078V26.412C0 28.896 2.015 30.912 4.5 30.912H32.934C35.419 30.912 37.434 28.896 37.434 26.412V10.078C37.432 7.59197 35.417 5.57797 32.932 5.57797ZM18.715 26.244C14.027 26.244 10.215 22.432 10.215 17.744C10.215 13.057 14.027 9.24397 18.715 9.24397C23.403 9.24397 27.215 13.056 27.215 17.744C27.215 22.432 23.402 26.244 18.715 26.244ZM23.215 17.744C23.215 20.223 21.195 22.244 18.715 22.244C16.235 22.244 14.215 20.223 14.215 17.744C14.215 15.264 16.235 13.244 18.715 13.244C21.195 13.244 23.215 15.264 23.215 17.744Z" fill="black" />
+                                    </svg>
+                                </label>
+                                <input className={style.inputPhoto} id="file" name="file" type="file" onChange={(event) => {
+                                    setFieldValue("file", event.currentTarget.files[0]);
+                                }}/>
+                            </button>
+                        </div>
+                        <div>
+                            <Field name="name" type="text" value={values.name} placeholder="Наименование" onChange={handleChange}/>
+                            <h3>
+                                Описание
+                            </h3>
+                            <div>
+                                <Field name="description" type="text" placeholder="Описание" />
+                            </div>
+                            <h3>
+                                Характеристики
+                            </h3>
+                            <div>
+                                {chara.map(i => <CharChangeRecordInput key={i.id} char={i.characters} prop={i.props} id={i.id} setFieldValue={setFieldValue} deleteField={deleteField}/>)}
+                            </div>
+                            <button type="button" onClick={addNewField} className={style.add}>
+                                +
+                            </button>
+                            <div className={style.buttonContainer}>
+                                <TargetButton
+                                    disabled={isSubmitting}
+                                    style={{
+                                        backgroundColor: '#49C155',
+                                        color: 'white',
+                                        border: 'none',
+                                        marginRight: 10,
+                                        marginBottom: 10,
+                                        width: 'calc(50% - 5px)'
+                                    }}
+                                >
+                                    Изменить
+                                </TargetButton>
+                            </div>
+                            <TargetButton type="button" style={{ width: '100%' }} onClick={props.onClose}>
+                                Отменить
+                            </TargetButton>
+                        </div>
+                    </Form>
+                )}
+            </Formik>
+        </Modal >
+    )
+}
 
 
 const CharRecordInput = (props) => {
@@ -40,6 +179,18 @@ const CharRecordInput = (props) => {
 }
 
 function SureModal(props) {
+
+
+    const deleteItem = (id) =>{
+        const DATA = new FormData();
+        DATA.append("id", id)
+        deleteItemsCategory(DATA).then(response => {
+            alert("Товар Удален")
+        })
+    }
+    
+
+
     return (
         <Modal className={style.sureModal} {...props}>
             <h3>
@@ -49,6 +200,9 @@ function SureModal(props) {
                 <TargetButton style={{
                     marginTop: 20,
                     marginRight: 10,
+                }}
+                onClick={ () => {
+                    deleteItem(props.idItemFoDelete)
                 }}>
                     Да
                 </TargetButton>
@@ -71,21 +225,15 @@ function ItemModal(props) {
 
     const [fieldsValue, fieldValuePlus] = useState([1])
 
-    useEffect(()=>{
-        console.log(fieldsValue);
-    })
-
 
     const deleteField = (id) => {
         const fieldsValueNew = fieldsValue.filter(item => item !== id)
-        fieldValuePlus(fieldsValueNew) 
-        console.log(fieldsValueNew);  
+        fieldValuePlus(fieldsValueNew)  
     }
 
     const addNewField = () => {
-        const fieldsPlus = + fieldsValue.length + Math.random() * 10
-        fieldsValue.push(fieldsPlus)
-        fieldValuePlus(fieldsValue)   
+        const fieldsPlus = + fieldsValue.length + Math.floor(Math.random() * 1000)
+        fieldValuePlus([...fieldsValue, fieldsPlus])   
     }
 
     return (
@@ -93,31 +241,61 @@ function ItemModal(props) {
             <Formik
                 initialValues={{
                     name: '',
-                    features: '',
-                    props: '',
-                    char: ''
+                    description: '',
+                    props1: '',
+                    char1: ''
                 }}
                 onSubmit={(values) => {
-                    console.log(values);
+                    const val = Object.entries(values);
+
+                    const name = val[0][1]
+
+                    const description = val[1][1]
+
+                    const photoEl = val.length - 1
+                    const photo = val[photoEl][1]
+
+                    let arrChar = []
+                    let arrProps = []
+
+
+                    val.filter(vaiI => {
+                        if (vaiI[0][0] === 'c'){
+                            arrChar.push(vaiI[1] + "&^")
+                        }
+                    })
+
+                    val.filter(vaiI => {
+                        if (vaiI[0][0] === 'p'){
+                            arrProps.push(vaiI[1] + "&^")
+                        }
+                    })
+
                     const DATA = new FormData();
-                    DATA.append("name", values.name)
-                    DATA.append("character", values.char)
-                    DATA.append("props", values.props)
-                    DATA.append("feature", values.features)
-                    DATA.append("category", "video")
+                    DATA.append('char', arrChar)
+                    DATA.append('prop', arrProps)
+                    DATA.append('name', name);
+                    DATA.append('description', description)
+                    DATA.append('file', photo)
+                    DATA.append("category", props.categoryName)
                     DATA.append("id", Math.floor(Math.random() * 1000000))
-                    // addItems(DATA);
+                    addItems(DATA).then(response => {
+                        alert("Товар Добален")
+                    })
                 }}
             >
-                {({ isSubmitting }) => (
+                {({ isSubmitting,  setFieldValue }) => (
                     <Form className={style.modalContainer}>
                         <div className={style.imageContainer}>
                             <button type="button" className={style.addPhoto}>
-                                <div>
+                                <label htmlFor="file" className={style.labelPhoto}>
                                     <svg width="60" height="60" viewBox="0 0 38 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M32.932 5.57797H27.52V5.02197C27.52 2.53797 25.504 0.521973 23.02 0.521973H14.413C11.928 0.521973 9.913 2.53797 9.913 5.02197V5.57797H4.5C2.015 5.57797 0 7.59297 0 10.078V26.412C0 28.896 2.015 30.912 4.5 30.912H32.934C35.419 30.912 37.434 28.896 37.434 26.412V10.078C37.432 7.59197 35.417 5.57797 32.932 5.57797ZM18.715 26.244C14.027 26.244 10.215 22.432 10.215 17.744C10.215 13.057 14.027 9.24397 18.715 9.24397C23.403 9.24397 27.215 13.056 27.215 17.744C27.215 22.432 23.402 26.244 18.715 26.244ZM23.215 17.744C23.215 20.223 21.195 22.244 18.715 22.244C16.235 22.244 14.215 20.223 14.215 17.744C14.215 15.264 16.235 13.244 18.715 13.244C21.195 13.244 23.215 15.264 23.215 17.744Z" fill="black" />
                                     </svg>
-                                </div>
+                                </label>
+                                <input className={style.inputPhoto} id="file" name="file" type="file" onChange={(event) => {
+                                    setFieldValue("file", event.currentTarget.files[0]);
+                                }}/>
                             </button>
                         </div>
                         <div>
@@ -167,6 +345,7 @@ function ItemModal(props) {
 }
 
 function CategoryItem(props) {
+
     useEffect(() => {
         Aos.init({ duration: 700 })
     })
@@ -175,13 +354,15 @@ function CategoryItem(props) {
 
     const setSureModal = () => {
         openSureModal(!isSureModalOpened)
-        console.log('clicked');
     }
+
+    const itemImage = new Image();
+    itemImage.src = props.img;
 
     return (
         <div className={style.item} data-aos="fade">
 
-            <SureModal isOpen={isSureModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setSureModal} />
+            <SureModal idItemFoDelete={props.id} isOpen={isSureModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setSureModal} />
 
             <button className={style.deleteItem} onClick={setSureModal}>
                 <p>
@@ -189,7 +370,7 @@ function CategoryItem(props) {
                 </p>
             </button>
             <div className={style.itemPreview}>
-                <img />
+                <img src={itemImage.src} />
             </div>
             <Paragraph
                 style={{
@@ -206,7 +387,7 @@ function CategoryItem(props) {
                             height: 40,
                             minWidth: 150
                         }}
-                        onClick={props.modal}
+                        onClick={() => { props.modal(props.id)}}
                     >
                         Изменить
                     </TargetButton>
@@ -248,6 +429,18 @@ function AdminPage(props) {
     }
 
 
+    // changeModal
+    const [isChangeModalOpened, openChangeModal] = useState(false)
+    const [ItemChange, setChengeItem] = useState([])
+
+    const setChangeModal = (id) => {
+        openChangeModal(!isChangeModalOpened)
+        const DATA = new FormData()
+        DATA.append("id", id)
+        setItemChangeModal(DATA).then(response => {
+            setChengeItem(response)
+        })
+    }
 
     // Base
     const [categoryItem, setItems] = useState()
@@ -263,17 +456,21 @@ function AdminPage(props) {
         // })
     })
 
+    const [categoryName, setCategoryName] = useState()
+
     const setItemsAdmin = (categoryName) => {
+        setCategoryName(categoryName)
         const DATA = new FormData()
         DATA.append("category", categoryName)
         setItemsCategory(DATA).then(response => {
-            setItems(response.map(i => <CategoryItem key={i.id} name={i.name} modal={setModal} />))
+            setItems(response.map(i => <CategoryItem  key={i.id} id={i.id} name={i.name} img={i.img} modal={setChangeModal} />))
         })
     }
 
     return (
         <main data-aos="fade">
-            <ItemModal categoryName={""} isOpen={isModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setModal} />
+            <ChangeItemModal Item={ItemChange} isOpen={isChangeModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setChangeModal} />
+            <ItemModal  categoryName={categoryName} isOpen={isModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setModal} />
             <Section>
                 <Container>
                     <Heading>

@@ -1,5 +1,5 @@
 // React
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 // RRD
 import {
     Route,
@@ -57,8 +57,6 @@ function App() {
         description: newCategoryItemDescription,
         characteristics: newCategoryItemCharacteristics
     }
-
-    console.log('itempar\n', itemPar);
 
     return (
         <BrowserRouter>

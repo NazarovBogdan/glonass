@@ -6,7 +6,7 @@ import style from './CategoryPage.module.scss'
 import Aos from 'aos'
 import '../../../node_modules/aos/dist/aos.css'
 // RRD
-import { useLocation, useParams, useHistory } from 'react-router-dom'
+
 // Components
 import Subtitle from './../../components/Subtitle/Subtitle'
 import Section from './../../components/Section/Section'

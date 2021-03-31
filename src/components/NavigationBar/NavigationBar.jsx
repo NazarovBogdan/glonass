@@ -81,7 +81,7 @@ function NavigationBar(props) {
                     </NavLink>
                 </li>
                 <li>
-                    <input type="checkbox" id="switch" onClick={props.onChangeTheme} /><label for="switch">Toggle</label>
+                    <input type="checkbox" className={style.input_nav} id="switch" onClick={props.onChangeTheme} /><label className={style.label_nav} for="switch">Toggle</label>
                 </li>
             </ul>
         </nav>
