@@ -56,3 +56,53 @@ export const addItems = (params) => {
         return response.data
     })
 }
+
+export const changeNameItem = (params) => {
+    return instanse({
+        method: 'post',
+        url: 'changeName.php',
+        data: params
+    }).then(response => {
+        return response.data
+    })
+}
+
+export const changeDescItem = (params) => {
+    return instanse({
+        method: 'post',
+        url: 'changeDesc.php',
+        data: params
+    }).then(response => {
+        return response.data
+    })
+}
+
+export const changeImgItem = (params) => {
+    return instanse({
+        method: 'post',
+        url: 'changeImg.php',
+        data: params
+    }).then(response => {
+        return response.data
+    })
+}
+
+export const changeCharItem = (params) => {
+    return instanse({
+        method: 'post',
+        // url: 'addItem.php',
+        data: params
+    }).then(response => {
+        return response.data
+    })
+}
+
+export const deleteChar = (params) => {
+    return instanse({
+        method: 'post',
+        url: 'deleteChar.php',
+        data: params
+    }).then(response => {
+        return response.data
+    })
+}
