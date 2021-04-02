@@ -11,7 +11,8 @@ import { Formik, Form, Field } from 'formik'
 import {
     Switch,
     Route,
-    NavLink
+    NavLink,
+    Redirect
 } from 'react-router-dom'
 // Modal
 import Modal from 'react-modal'
@@ -268,6 +269,8 @@ function AddNewItem(props) {
 }
 
 function AdminPage(props) {
+
+    
     // Navigation bar style
     const [bgColor, setColor] = useState('transparent')
     const [boxShadow, setShadow] = useState('none')
@@ -327,6 +330,8 @@ function AdminPage(props) {
             setItems(response.map(i => <CategoryItem setItemChenge={setItemChenge} key={i.id} id={i.id} name={i.name} img={i.img} modal={setChangeModal} />))
         })
     }
+
+    if(props.idUser === 0) return <Redirect to="/adminmodal" />;
 
     return (
         <main data-aos="fade">

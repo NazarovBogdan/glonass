@@ -6,6 +6,7 @@ import {
     Redirect,
     Switch,
     BrowserRouter,
+    useHistory,
 } from 'react-router-dom'
 // Components
 import Header from './components/Header/Header'
@@ -22,12 +23,22 @@ import CategoryPage from './pages/CategoryPage/CategoryPage'
 import IndustryPage from './pages/IndustryPage/IndustryPage'
 import AdminPage from './pages/AdminPage/AdminPage'
 import ItemPage from './pages/ItemPage/ItemPage'
+import { SureModal } from './pages/AdminPage/AdminModal'
 
 
 
 function App() {
     const [category, setNewName] = useState()
     const [category2, setNewNameCat] = useState()
+    const [idUser, setUser] = useState(1) 
+
+    function setUserApi(id){
+        if (id === 1) {
+            setUser(id)              
+        } else {
+            alert("не верный логин или пароль")
+        }
+    }
 
     function setName(categoryName, categoryName2) {
         setNewName(categoryName)
@@ -63,7 +74,10 @@ function App() {
             <ScrollToTop>
                 <Switch>
                     <Route path="/admin">
-                        <AdminPage />
+                        <AdminPage idUser={idUser} />
+                    </Route>
+                    <Route path="/adminmodal">
+                        <SureModal setUserApi={setUserApi} idUser={idUser} />
                     </Route>
                     <Route path="/">
                         {/* <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}> */}

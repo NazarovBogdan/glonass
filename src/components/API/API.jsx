@@ -106,3 +106,13 @@ export const deleteChar = (params) => {
         return response.data
     })
 }
+
+export const setUser = (params) => {
+    return instanse({
+        method: 'post',
+        url: 'setUser.php',
+        data: params
+    }).then(response => {
+        return response.data
+    })
+}

@@ -597,3 +597,34 @@ main {
         margin-bottom: 10px;
     }
 }
+
+.field_login{
+    font-size: 20px;
+    line-height: 125%;
+    outline: none;
+    padding: 5px;
+    background-color: #ececec;
+    border: none;
+    width: 300px;
+    resize: none;
+    border-radius: 30px;
+    padding: 20px 20px;
+    margin-bottom: 10px;
+    font-family: Montserrat;
+}
+
+.form_login{
+    border: 1px solid black;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.form_container{
+    width: 100%;
+    margin-top: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
