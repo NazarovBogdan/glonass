@@ -90,7 +90,7 @@ export const changeImgItem = (params) => {
 export const changeCharItem = (params) => {
     return instanse({
         method: 'post',
-        // url: 'addItem.php',
+        url: 'changeRecord.php',
         data: params
     }).then(response => {
         return response.data

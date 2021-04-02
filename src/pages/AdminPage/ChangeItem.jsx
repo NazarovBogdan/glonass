@@ -9,7 +9,7 @@ import Container from '../../components/Container/Container'
 import Modal from 'react-modal'
 import { setItemChangeModal } from "../../components/API/API"
 import TargetButton from '../../components/TargetButton/TargetButton'
-import {changeImgItem, changeDescItem, changeNameItem, deleteChar } from '../../components/API/API'
+import {changeImgItem, changeDescItem, changeNameItem, deleteChar, changeCharItem } from '../../components/API/API'
 
 
 export function ChangeItemPage(props) {
@@ -119,12 +119,42 @@ export function ChangeItemPage(props) {
             
           },
         onSubmit: (values,{ resetForm })  => {
-            console.log(values);
+            const val = Object.entries(values);
+
+            let arrChar = []
+            let arrProps = []
+            let idChar = []
+            let idProps = []
+
+
+            val.filter(vaiI => {
+                if (vaiI[0][0] === 'c'){
+                    arrChar.push(vaiI[1] + "&^")
+                    let nameIdChar = vaiI[0]
+                    let idChars = nameIdChar.substr(4)
+                    idChar.push(idChars)
+                }
+            })
+
+            val.filter(vaiI => {
+                if (vaiI[0][0] === 'p'){
+                    arrProps.push(vaiI[1] + "&^")
+                    let nameIdProps = vaiI[0]
+                    let idProp = nameIdProps.substr(5)
+                    idProps.push(idProp)
+                }
+            })
+
+
+            const DATA = new FormData()
+            DATA.append("idRecord" , idChar)
+            DATA.append("chars" , arrChar)
+            DATA.append("props", arrProps)
             resetForm()
-        //     const DATA = new FormData()
-        //     DATA.append("id",props.itemID)
-        //     DATA.append("char", values)
-        //     changeCharItem(DATA);
+            changeCharItem(DATA).then(response => {
+                alert(response);
+                resetForm()
+            });
         },
     })
 

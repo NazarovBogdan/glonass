@@ -47,6 +47,7 @@ function SureModal(props) {
         DATA.append("id", id)
         deleteItemsCategory(DATA).then(response => {
             alert("Товар Удален")
+            props.openSureModal()
         })
     }
     
@@ -142,6 +143,7 @@ function ItemModal(props) {
                     DATA.append("id", Math.floor(Math.random() * 1000000))
                     addItems(DATA).then(response => {
                         alert("Товар Добален")
+                        props.openModal()
                     })
                 }}
             >
@@ -190,9 +192,6 @@ function ItemModal(props) {
                                 >
                                     Добавить
                                 </TargetButton>
-                                {/* <TargetButton style={{ backgroundColor: '#DA4141', color: 'white', border: 'none', marginBottom: 10, width: 'calc(50% - 5px)' }}>
-                                    Удалить
-                                </TargetButton> */}
                             </div>
                             <TargetButton type="button" style={{ width: '100%' }} onClick={props.onClose}>
                                 Отменить
@@ -223,7 +222,7 @@ function CategoryItem(props) {
     return (
         <div className={style.item} data-aos="fade">
 
-            <SureModal idItemFoDelete={props.id} isOpen={isSureModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setSureModal} />
+            <SureModal idItemFoDelete={props.id} openSureModal={openSureModal} isOpen={isSureModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setSureModal} />
 
             <button className={style.deleteItem} onClick={setSureModal}>
                 <p>
@@ -332,7 +331,7 @@ function AdminPage(props) {
     return (
         <main data-aos="fade">
             {/* <ChangeItemModal Item={ItemChange} isOpen={isChangeModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setChangeModal} /> */}
-            <ItemModal  categoryName={categoryName} isOpen={isModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setModal} />
+            <ItemModal  categoryName={categoryName} openModal={openModal} isOpen={isModalOpened} onAfterOpen={() => document.body.style.overflow = "hidden"} onAfterClose={() => document.body.style.overflow = "visible"} onClose={setModal} />
             <Section>
                 <Container>
                     <Heading>
